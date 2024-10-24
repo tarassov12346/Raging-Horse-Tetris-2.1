@@ -64,9 +64,16 @@ Java Tetris Tests
 
 There are 16 tests which provide for the game units' functionality:
 
+- run the following maven command to start unit tests:
+  mvn -DsuiteXml=testng-unit-tests.xml clean test
+
 - each test method is logged for debugging pls find the unit tests log in \target\logs\quality-automation.log
 
 Pls find 8 api tests which make sure that each defined client request receives successful response 
 from the server and 7 more api tests checking if response bodies are in accordance with client requests:
+
+- run the following maven command to start api tests:
+
+  mvn -DsuiteXml=testng-api-tests.xml clean test
 
 - the test method is logged for debugging pls find the api tests log in \target\logs\quality-automation.log
