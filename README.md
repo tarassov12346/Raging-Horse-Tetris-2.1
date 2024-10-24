@@ -54,6 +54,8 @@ The project uses the following technologies:
 - JSP
 - Serialization
 - NoSQL (MongoDB) 
+- GridFS
+- BSON
 - PostgreSQL
 - Hibernate 
 - Lombok
@@ -65,6 +67,7 @@ Java Tetris Tests
 There are 16 tests which provide for the game units' functionality:
 
 - run the following maven command to start unit tests:
+  
   mvn -DsuiteXml=testng-unit-tests.xml clean test
 
 - each test method is logged for debugging pls find the unit tests log in \target\logs\quality-automation.log
