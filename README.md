@@ -80,3 +80,11 @@ from the server and 7 more api tests checking if response bodies are in accordan
   mvn -DsuiteXml=testng-api-tests.xml clean test
 
 - the test method is logged for debugging pls find the api tests log in \target\logs\quality-automation.log
+
+Pls find 3 UI tests, making sure that the game is saved and then can be restarted at any moment later
+
+- run the following maven command to start api tests:
+  
+- mvn -Dbrowser=firefox -DsuiteXml=testng-ui-tests.xml clean test
+
+- the test method is logged for debugging pls find the api tests log in \target\logs\quality-automation.log
