@@ -62,6 +62,20 @@ The project uses the following technologies:
 - Playwright Java 
 - Docker 
 
+There is a custom test framework for Test Automation created for the project. 
+
+The two most popular hybrid frameworks are used: 
+
+TestNG and BDD Cucumber The following technologies are used here:
+
+- Selenium
+- Singleton+Factory
+- Page Object
+- Page Factory
+- REST Assured
+- Data Provider
+- Gherkin
+
 Java Tetris Tests
 
 There are 16 tests which provide for the game units' functionality:
@@ -72,7 +86,8 @@ There are 16 tests which provide for the game units' functionality:
 
 - each test method is logged for debugging pls find the unit tests log in \target\logs\quality-automation.log
 
-Pls find 8 api tests which make sure that each defined client request receives successful response 
+Pls find 8 api tests which make sure that each defined client request receives successful response
+
 from the server and 7 more api tests checking if response bodies are in accordance with client requests:
 
 - run the following maven command to start api tests:
@@ -83,7 +98,7 @@ from the server and 7 more api tests checking if response bodies are in accordan
 
 Pls find 3 UI tests, making sure that the game is saved and then can be restarted at any moment later
 
-- run the following maven command to start api tests:
+- run the following maven command to start ui tests:
   
 - mvn -Dbrowser=firefox -DsuiteXml=testng-ui-tests.xml clean test
 
