@@ -29,6 +29,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<!-- <scope>provided</scope> -->
+			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>com.microsoft.playwright</groupId>
@@ -135,8 +136,6 @@
 			<version>21-ea+5</version>
 			<scope>test</scope>
 		</dependency>
-
-
 		<dependency>
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-testng</artifactId>
@@ -153,11 +152,7 @@
 			<artifactId>gherkin</artifactId>
 			<version>26.1.0</version>
 		</dependency>
-
-
 	</dependencies>
-
-
 	<profiles>
 		<profile>
 			<id>wip</id>
