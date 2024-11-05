@@ -86,7 +86,7 @@ There are 16 tests which provide for the game units' functionality:
 
 - each test method is logged for debugging pls find the unit tests log in \target\logs\quality-automation.log
 
-![](unitTestLog.png)
+![](bddTestLog.png)
 
 Pls find 8 api tests which make sure that each defined client request receives successful response
 
@@ -98,7 +98,7 @@ from the server and 7 more api tests checking if response bodies are in accordan
 
 - the test method is logged for debugging pls find the api tests log in \target\logs\quality-automation.log
 
-![](apiTestLog.png)
+![](uiTestLog.png)
 
 Pls find 3 UI tests, making sure that the game is saved and then can be restarted at any moment later
 
@@ -106,9 +106,9 @@ Pls find 3 UI tests, making sure that the game is saved and then can be restarte
   
 - mvn -Dbrowser=firefox -DsuiteXml=testng-ui-tests.xml clean test
 
-- the test method is logged for debugging pls find the api tests log in \target\logs\quality-automation.log
+- the test method is logged for debugging pls find the ui tests log in \target\logs\quality-automation.log
 
-![](uiTestLog.png)
+![](apiTestLog.png)
 
 Pls find Cucumber test, reflecting user behaviour driven approach to tests development
 
@@ -116,6 +116,6 @@ run the following maven command to start api tests:
 
 - mvn -Dbrowser=firefox -DsuiteXml=testng-bdd-tests.xml clean test
 
-- the test method is logged for debugging pls find the api tests log in \target\logs\quality-automation.log
+- the test method is logged for debugging pls find the bdd tests log in \target\logs\quality-automation.log
 
-![](bddTestLog.png)
+![](unitTestLog.png)
