@@ -13,6 +13,7 @@ import com.app.game.tetris.serviceImpl.State;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -22,6 +23,7 @@ import org.testng.annotations.*;
                 PlayGameConfiguration.class, SaveGameConfiguration.class,
                 RestartGameConfiguration.class, Player.class, Tetramino.class, Stage.class, State.class,
                 TetrisNewApplication.class, UnitTestService.class})
+@DirtiesContext(classMode= DirtiesContext.ClassMode.AFTER_CLASS)
 public class UnitTest extends AbstractTestNGSpringContextTests {
     protected static final Logger log = Logger.getLogger(UnitTest.class.getName());
 

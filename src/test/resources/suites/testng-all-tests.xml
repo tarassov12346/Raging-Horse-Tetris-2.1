@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="All tests">
+
+    <test name="All Tests">
+        <classes>
+            <class name="unit_tests.UnitTest"/>
+            <class name="api_tests.APITest"/>
+            <class name="ui_tests.test.GameSaveTest"/>
+            <class name="bdd_tests.runners.RunCucumberTest"/>
+        </classes>
+    </test>
+</suite>

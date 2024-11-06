@@ -5,6 +5,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.springframework.boot.SpringApplication;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -26,9 +27,11 @@ public class CommonConditions {
     String restartedPlayerScore;
     GameService gameService;
 
+    ConfigurableApplicationContext ctx;
+
     @BeforeClass
     public void doBeforeTests() {
-        SpringApplication.run(TetrisNewApplication.class);
+        ctx = SpringApplication.run(TetrisNewApplication.class);
         log.info("UITests start");
         driver = DriverSingleton.getDriver();
         gameService = new GameService(driver);
@@ -53,6 +56,6 @@ public class CommonConditions {
     @AfterClass
     public void doAfterTests() {
         log.info("UITests are finished");
-        //  gameService.closeBrowser();
+        ctx.close();
     }
 }

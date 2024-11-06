@@ -19,6 +19,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.testng.AbstractTestNGSpringContextTests;
 import org.testng.Assert;
 import org.testng.annotations.*;
@@ -34,6 +35,7 @@ import static io.restassured.RestAssured.given;
                 PlayGameConfiguration.class, SaveGameConfiguration.class,
                 RestartGameConfiguration.class, Player.class, Tetramino.class, Stage.class, State.class,
                 TetrisNewApplication.class, APITestService.class})
+@DirtiesContext(classMode= DirtiesContext.ClassMode.AFTER_CLASS)
 public class APITest extends AbstractTestNGSpringContextTests{
     private static final Logger log = Logger.getLogger(APITest.class);
 

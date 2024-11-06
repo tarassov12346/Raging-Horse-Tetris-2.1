@@ -112,10 +112,21 @@ Pls find 3 UI tests, making sure that the game is saved and then can be restarte
 
 Pls find Cucumber test, reflecting user behaviour driven approach to tests development
 
-run the following maven command to start api tests:
+- run the following maven command to start api tests:
 
 - mvn -Dbrowser=firefox -DsuiteXml=testng-bdd-tests.xml clean test
 
 - the test method is logged for debugging pls find the bdd tests log in \target\logs\quality-automation.log
 
 ![](bddTestLog.png)
+
+Run All tests
+
+
+ - run the following maven command to run all tests:
+
+ - mvn -Dbrowser=firefox -DsuiteXml=testng-all-tests.xml clean test
+
+ - the test method is logged for debugging pls find all tests log in \target\logs\quality-automation.log
+
+![](quality-automation-example.log)

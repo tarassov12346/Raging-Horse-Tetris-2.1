@@ -1,0 +1,445 @@
+2024-11-06 18:51:08 INFO  UnitTest:35 - UnitTests start
+2024-11-06 18:51:09 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:09 INFO  UnitTest:50 - doFullRowsCollapseAndScoreIsUpdated Test start
+2024-11-06 18:51:09 INFO  UnitTest:51 - filled rows number is 2
+2024-11-06 18:51:09 INFO  UnitTest:54 - new tetramino is called with the shape type Z
+2024-11-06 18:51:09 INFO  UnitTest:58 - collapsed layers count=2
+2024-11-06 18:51:09 INFO  UnitTest:59 - players score =20
+2024-11-06 18:51:09 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:09 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:09 INFO  UnitTest:50 - doFullRowsCollapseAndScoreIsUpdated Test start
+2024-11-06 18:51:09 INFO  UnitTest:51 - filled rows number is 3
+2024-11-06 18:51:09 INFO  UnitTest:54 - new tetramino is called with the shape type S
+2024-11-06 18:51:09 INFO  UnitTest:58 - collapsed layers count=3
+2024-11-06 18:51:09 INFO  UnitTest:59 - players score =30
+2024-11-06 18:51:09 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:09 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:09 INFO  UnitTest:144 - doesTetraminoMoveDown Test start
+2024-11-06 18:51:09 INFO  UnitTest:146 - new tetramino is called with the shape type L
+2024-11-06 18:51:09 INFO  UnitTest:153 - Tetramino initial position x=4 y=0
+2024-11-06 18:51:09 INFO  UnitTest:154 - moveDown is called
+2024-11-06 18:51:09 INFO  UnitTest:155 - Tetramino after moveDown with step 1 new position x=4 y=1
+2024-11-06 18:51:09 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:09 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:09 INFO  UnitTest:144 - doesTetraminoMoveDown Test start
+2024-11-06 18:51:09 INFO  UnitTest:146 - new tetramino is called with the shape type I
+2024-11-06 18:51:09 INFO  UnitTest:153 - Tetramino initial position x=4 y=0
+2024-11-06 18:51:09 INFO  UnitTest:154 - moveDown is called
+2024-11-06 18:51:09 INFO  UnitTest:155 - Tetramino after moveDown with step 1 new position x=4 y=1
+2024-11-06 18:51:09 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:09 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:09 INFO  UnitTest:161 - doesTetraminoMoveDownStopAtUnfilledLayers Test start
+2024-11-06 18:51:09 INFO  UnitTest:163 - new tetramino is called with the shape type K
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=1
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=2
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=3
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=4
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=5
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=6
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=7
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=8
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=9
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=10
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=11
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=12
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=13
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=14
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=15
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=16
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=17
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=17
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=17
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=17
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=17
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=17
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=17
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=17
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=17
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=17
+2024-11-06 18:51:09 INFO  UnitTest:175 - Tetramino initial position x=4 y=0
+2024-11-06 18:51:09 INFO  UnitTest:176 - moveDown 25 times is performed
+2024-11-06 18:51:09 INFO  UnitTest:177 - Tetramino moveDown 25 times new position x=4 y=17
+2024-11-06 18:51:09 INFO  UnitTest:178 - Tetramino type K
+2024-11-06 18:51:09 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:09 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:09 INFO  UnitTest:161 - doesTetraminoMoveDownStopAtUnfilledLayers Test start
+2024-11-06 18:51:09 INFO  UnitTest:163 - new tetramino is called with the shape type T
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=1
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=2
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=3
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=4
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=5
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=6
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=7
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=8
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=9
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=10
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=11
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=12
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=13
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=14
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=15
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=16
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=16
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=16
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=16
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=16
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=16
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=16
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=16
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=16
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=16
+2024-11-06 18:51:09 INFO  UnitTestService:99 - move tetramino 1 step down
+2024-11-06 18:51:09 INFO  UnitTestService:100 - tetramino position x=4 y=16
+2024-11-06 18:51:09 INFO  UnitTest:175 - Tetramino initial position x=4 y=0
+2024-11-06 18:51:09 INFO  UnitTest:176 - moveDown 25 times is performed
+2024-11-06 18:51:09 INFO  UnitTest:177 - Tetramino moveDown 25 times new position x=4 y=16
+2024-11-06 18:51:09 INFO  UnitTest:178 - Tetramino type T
+2024-11-06 18:51:09 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:09 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:09 INFO  UnitTest:105 - doesTetraminoMoveLeft Test start
+2024-11-06 18:51:09 INFO  UnitTest:107 - new tetramino is called with the shape type Z
+2024-11-06 18:51:09 INFO  UnitTest:114 - Tetramino initial position x=4 y=0
+2024-11-06 18:51:09 INFO  UnitTest:115 - moveLeft is called
+2024-11-06 18:51:09 INFO  UnitTest:116 - Tetramino after moveLeft new position x=3 y=0
+2024-11-06 18:51:09 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:09 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:09 INFO  UnitTest:105 - doesTetraminoMoveLeft Test start
+2024-11-06 18:51:09 INFO  UnitTest:107 - new tetramino is called with the shape type I
+2024-11-06 18:51:09 INFO  UnitTest:114 - Tetramino initial position x=4 y=0
+2024-11-06 18:51:09 INFO  UnitTest:115 - moveLeft is called
+2024-11-06 18:51:09 INFO  UnitTest:116 - Tetramino after moveLeft new position x=3 y=0
+2024-11-06 18:51:09 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:09 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:09 INFO  UnitTest:122 - doesTetraminoMoveLeftStopAtBorder Test start
+2024-11-06 18:51:09 INFO  UnitTest:124 - new tetramino is called with the shape type Z
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=3 y=0
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=2 y=0
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=1 y=0
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=0 y=0
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=0 y=0
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=0 y=0
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=0 y=0
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=0 y=0
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=0 y=0
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=0 y=0
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=0 y=0
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=0 y=0
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=0 y=0
+2024-11-06 18:51:09 INFO  UnitTest:135 - Tetramino initial position x=4 y=0
+2024-11-06 18:51:09 INFO  UnitTest:136 - moveLeft 13 times is performed
+2024-11-06 18:51:09 INFO  UnitTest:137 - Tetramino moveLeft 13 times new position x=0 y=0
+2024-11-06 18:51:09 INFO  UnitTest:138 - Tetramino type Z
+2024-11-06 18:51:09 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:09 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:09 INFO  UnitTest:122 - doesTetraminoMoveLeftStopAtBorder Test start
+2024-11-06 18:51:09 INFO  UnitTest:124 - new tetramino is called with the shape type I
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=3 y=0
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=2 y=0
+2024-11-06 18:51:09 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:09 INFO  UnitTestService:91 - tetramino position x=1 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:10 INFO  UnitTestService:91 - tetramino position x=0 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:10 INFO  UnitTestService:91 - tetramino position x=-1 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:10 INFO  UnitTestService:91 - tetramino position x=-1 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:10 INFO  UnitTestService:91 - tetramino position x=-1 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:10 INFO  UnitTestService:91 - tetramino position x=-1 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:10 INFO  UnitTestService:91 - tetramino position x=-1 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:10 INFO  UnitTestService:91 - tetramino position x=-1 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:10 INFO  UnitTestService:91 - tetramino position x=-1 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:10 INFO  UnitTestService:91 - tetramino position x=-1 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:90 - move tetramino 1 step left
+2024-11-06 18:51:10 INFO  UnitTestService:91 - tetramino position x=-1 y=0
+2024-11-06 18:51:10 INFO  UnitTest:135 - Tetramino initial position x=4 y=0
+2024-11-06 18:51:10 INFO  UnitTest:136 - moveLeft 13 times is performed
+2024-11-06 18:51:10 INFO  UnitTest:137 - Tetramino moveLeft 13 times new position x=-1 y=0
+2024-11-06 18:51:10 INFO  UnitTest:138 - Tetramino type I
+2024-11-06 18:51:10 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:10 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:10 INFO  UnitTest:66 - doesTetraminoMoveRight Test start
+2024-11-06 18:51:10 INFO  UnitTest:68 - new tetramino is called with the shape type L
+2024-11-06 18:51:10 INFO  UnitTest:75 - Tetramino initial position x=4 y=0
+2024-11-06 18:51:10 INFO  UnitTest:76 - moveRight is called
+2024-11-06 18:51:10 INFO  UnitTest:77 - Tetramino after moveRight new position x=5 y=0
+2024-11-06 18:51:10 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:10 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:10 INFO  UnitTest:66 - doesTetraminoMoveRight Test start
+2024-11-06 18:51:10 INFO  UnitTest:68 - new tetramino is called with the shape type S
+2024-11-06 18:51:10 INFO  UnitTest:75 - Tetramino initial position x=4 y=0
+2024-11-06 18:51:10 INFO  UnitTest:76 - moveRight is called
+2024-11-06 18:51:10 INFO  UnitTest:77 - Tetramino after moveRight new position x=5 y=0
+2024-11-06 18:51:10 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:10 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:10 INFO  UnitTest:83 - doesTetraminoMoveRightStopAtBorder Test start
+2024-11-06 18:51:10 INFO  UnitTest:85 - new tetramino is called with the shape type Z
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=5 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=6 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=7 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=8 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=9 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=9 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=9 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=9 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=9 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=9 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=9 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=9 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=9 y=0
+2024-11-06 18:51:10 INFO  UnitTest:96 - Tetramino initial position x=4 y=0
+2024-11-06 18:51:10 INFO  UnitTest:97 - moveRight 13 times is performed
+2024-11-06 18:51:10 INFO  UnitTest:98 - Tetramino moveRight 13 times new position x=9 y=0
+2024-11-06 18:51:10 INFO  UnitTest:99 - Tetramino type Z
+2024-11-06 18:51:10 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:10 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:10 INFO  UnitTest:83 - doesTetraminoMoveRightStopAtBorder Test start
+2024-11-06 18:51:10 INFO  UnitTest:85 - new tetramino is called with the shape type I
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=5 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=6 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=7 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=8 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=9 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=10 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=10 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=10 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=10 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=10 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=10 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=10 y=0
+2024-11-06 18:51:10 INFO  UnitTestService:81 - move tetramino 1 step right
+2024-11-06 18:51:10 INFO  UnitTestService:82 - tetramino position x=10 y=0
+2024-11-06 18:51:10 INFO  UnitTest:96 - Tetramino initial position x=4 y=0
+2024-11-06 18:51:10 INFO  UnitTest:97 - moveRight 13 times is performed
+2024-11-06 18:51:10 INFO  UnitTest:98 - Tetramino moveRight 13 times new position x=10 y=0
+2024-11-06 18:51:10 INFO  UnitTest:99 - Tetramino type I
+2024-11-06 18:51:10 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:10 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:10 INFO  UnitTest:184 - doesTetraminoRotate Test start
+2024-11-06 18:51:10 INFO  UnitTest:186 - new tetramino is called with the shape type T
+2024-11-06 18:51:10 INFO  UnitTest:193 - Tetramino initial shape {{"0","0","0"},{"T","T","T"},{"0","T","0"}}
+2024-11-06 18:51:10 INFO  UnitTest:194 - Tetramino after rotate new shape {{"0","T","0"},{"0","T","T"},{"0","T","0"}}
+2024-11-06 18:51:10 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:10 INFO  UnitTest:40 - Test Method  is called
+2024-11-06 18:51:10 INFO  UnitTest:184 - doesTetraminoRotate Test start
+2024-11-06 18:51:10 INFO  UnitTest:186 - new tetramino is called with the shape type J
+2024-11-06 18:51:10 INFO  UnitTest:193 - Tetramino initial shape {{"0","J","0"},{"0","J","0"},{"J","J","0"}}
+2024-11-06 18:51:10 INFO  UnitTest:194 - Tetramino after rotate new shape {{"0","0","0"},{"J","J","J"},{"0","0","J"}}
+2024-11-06 18:51:10 INFO  UnitTest:201 - Test Method  is finished
+2024-11-06 18:51:10 INFO  UnitTest:206 - UnitTests are finished
+2024-11-06 18:51:12 INFO  APITest:47 - APITests start
+2024-11-06 18:51:12 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:12 INFO  APITest:71 - testing for 200 OK response  request-  /hello
+2024-11-06 18:51:15 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:15 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:15 INFO  APITest:71 - testing for 200 OK response  request-  /save
+2024-11-06 18:51:16 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:16 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:16 INFO  APITest:71 - testing for 200 OK response  request-  /restart
+2024-11-06 18:51:16 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:16 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:16 INFO  APITest:71 - testing for 200 OK response  request-  /0
+2024-11-06 18:51:16 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:16 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:16 INFO  APITest:71 - testing for 200 OK response  request-  /1
+2024-11-06 18:51:16 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:16 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:16 INFO  APITest:71 - testing for 200 OK response  request-  /2
+2024-11-06 18:51:16 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:16 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:16 INFO  APITest:71 - testing for 200 OK response  request-  /3
+2024-11-06 18:51:16 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:16 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:16 INFO  APITest:71 - testing for 200 OK response  request-  /4
+2024-11-06 18:51:16 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:16 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:16 INFO  APITest:77 - shouldGameIsONAppear Test start
+2024-11-06 18:51:17 INFO  APITest:97 - Game status: Game is ON
+2024-11-06 18:51:17 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:17 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:17 INFO  APITest:103 - shouldPlayerNameAppear Test start
+2024-11-06 18:51:17 INFO  APITest:133 - Player Ira Score 0 Best Player Oswaldo Best Score 50
+2024-11-06 18:51:17 INFO  APITest:133 - Player Ira Score 0 Best Player Oswaldo Best Score 50
+2024-11-06 18:51:17 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:17 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:17 INFO  APITest:142 - shouldTetraminoImageAppear Test start
+2024-11-06 18:51:17 INFO  APITest:172 - <td><img id="c0v5" src="/img/O.png"></td>
+2024-11-06 18:51:17 INFO  APITest:172 - <td><img id="c0v6" src="/img/O.png"></td>
+2024-11-06 18:51:17 INFO  APITest:172 - <td><img id="c1v5" src="/img/O.png"></td>
+2024-11-06 18:51:17 INFO  APITest:172 - <td><img id="c1v6" src="/img/O.png"></td>
+2024-11-06 18:51:17 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:17 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:17 INFO  APITest:183 - shouldTetraminoImageMoveDown Test start
+2024-11-06 18:51:17 INFO  APITestService:29 - 0 I.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 1 I.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 2 I.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 3 I.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 1 I.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 2 I.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 3 I.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 4 I.png 5
+2024-11-06 18:51:17 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:17 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:17 INFO  APITest:215 - shouldTetraminoImageMoveLeft Test start
+2024-11-06 18:51:17 INFO  APITestService:29 - 0 J.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 1 J.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 2 J.png 4
+2024-11-06 18:51:17 INFO  APITestService:29 - 2 J.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 1 J.png 4
+2024-11-06 18:51:17 INFO  APITestService:29 - 2 J.png 4
+2024-11-06 18:51:17 INFO  APITestService:29 - 3 J.png 3
+2024-11-06 18:51:17 INFO  APITestService:29 - 3 J.png 4
+2024-11-06 18:51:17 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:17 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:17 INFO  APITest:248 - shouldTetraminoImageMoveRight Test start
+2024-11-06 18:51:17 INFO  APITestService:29 - 0 I.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 1 I.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 2 I.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 3 I.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 1 I.png 6
+2024-11-06 18:51:17 INFO  APITestService:29 - 2 I.png 6
+2024-11-06 18:51:17 INFO  APITestService:29 - 3 I.png 6
+2024-11-06 18:51:17 INFO  APITestService:29 - 4 I.png 6
+2024-11-06 18:51:17 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:17 INFO  APITest:52 - Test Method  is called
+2024-11-06 18:51:17 INFO  APITest:280 - shouldTetraminoImageRotate Test start
+2024-11-06 18:51:17 INFO  APITestService:29 - 1 L.png 6
+2024-11-06 18:51:17 INFO  APITestService:29 - 2 L.png 4
+2024-11-06 18:51:17 INFO  APITestService:29 - 2 L.png 5
+2024-11-06 18:51:17 INFO  APITestService:29 - 2 L.png 6
+2024-11-06 18:51:18 INFO  APITest:313 - Test Method  is finished
+2024-11-06 18:51:18 INFO  APITest:318 - APITests are finished
+2024-11-06 18:51:25 INFO  GameSaveTest:35 - UITests start
+2024-11-06 18:51:50 INFO  GameService:35 - filledCellsList saved:
+2024-11-06 18:51:50 INFO  GameService:36 - [(17,5), (18,1), (18,2), (18,5), (18,7), (18,8), (19,2), (19,3), (19,4), (19,5), (19,6), (19,7)]
+2024-11-06 18:51:50 INFO  GameService:38 - Player Name saved:
+2024-11-06 18:51:50 INFO  GameService:39 - Tommy
+2024-11-06 18:51:50 INFO  GameService:41 - Player Score saved:
+2024-11-06 18:51:50 INFO  GameService:42 - 0
+2024-11-06 18:52:14 INFO  GameService:50 - filledCellsList after restart:
+2024-11-06 18:52:14 INFO  GameService:51 - [(17,5), (18,1), (18,2), (18,5), (18,7), (18,8), (19,2), (19,3), (19,4), (19,5), (19,6), (19,7)]
+2024-11-06 18:52:14 INFO  GameService:53 - Player Name after restart:
+2024-11-06 18:52:14 INFO  GameService:54 - Tommy
+2024-11-06 18:52:14 INFO  GameService:56 - Player Score after restart:
+2024-11-06 18:52:14 INFO  GameService:57 - 0
+2024-11-06 18:52:14 INFO  GameSaveTest:48 - Test Method  is called
+2024-11-06 18:52:14 INFO  GameSaveTest:10 - doesSavedGameRestart Test start
+2024-11-06 18:52:14 INFO  GameSaveTest:53 - Test Method  is finished
+2024-11-06 18:52:14 INFO  GameSaveTest:48 - Test Method  is called
+2024-11-06 18:52:14 INFO  GameSaveTest:16 - doesSavedGameRestartWithSavedPLayer Test start
+2024-11-06 18:52:14 INFO  GameSaveTest:53 - Test Method  is finished
+2024-11-06 18:52:14 INFO  GameSaveTest:48 - Test Method  is called
+2024-11-06 18:52:14 INFO  GameSaveTest:22 - doesSavedGameRestartWithSavedPLayerScore Test start
+2024-11-06 18:52:14 INFO  GameSaveTest:53 - Test Method  is finished
+2024-11-06 18:52:14 INFO  GameSaveTest:58 - UITests are finished
+2024-11-06 18:52:15 INFO  RunCucumberTest:22 - BDDTests start
+2024-11-06 18:52:32 INFO  StepDefinitionsForSave:70 - filledCellsList saved:
+2024-11-06 18:52:32 INFO  StepDefinitionsForSave:71 - [(17,7), (18,2), (18,3), (18,5), (18,6), (18,7), (19,1), (19,2), (19,5), (19,6), (19,7), (19,8)]
+2024-11-06 18:52:32 INFO  StepDefinitionsForSave:73 - Player Name saved:
+2024-11-06 18:52:32 INFO  StepDefinitionsForSave:74 - Oswaldo
+2024-11-06 18:52:32 INFO  StepDefinitionsForSave:76 - Player Score saved:
+2024-11-06 18:52:32 INFO  StepDefinitionsForSave:77 - 0
+2024-11-06 18:52:57 INFO  StepDefinitionsForSave:108 - filledCellsList after restart:
+2024-11-06 18:52:57 INFO  StepDefinitionsForSave:109 - [(17,7), (18,2), (18,3), (18,5), (18,6), (18,7), (19,1), (19,2), (19,5), (19,6), (19,7), (19,8)]
+2024-11-06 18:52:57 INFO  StepDefinitionsForSave:111 - Player Name after restart:
+2024-11-06 18:52:57 INFO  StepDefinitionsForSave:112 - Oswaldo
+2024-11-06 18:52:57 INFO  StepDefinitionsForSave:114 - Player Score after restart:
+2024-11-06 18:52:57 INFO  StepDefinitionsForSave:115 - 0
+2024-11-06 18:53:00 INFO  RunCucumberTest:28 - BDD Tests are finished
