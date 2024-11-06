@@ -129,4 +129,4 @@ Run All tests
 
  - the test method is logged for debugging pls find all tests log in \target\logs\quality-automation.log
 
-![](quality-automation-example.log)
+ 
