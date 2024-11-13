@@ -7,7 +7,7 @@ To run the game in Docker do the following steps:
 
 - pack the war file: 
 
-  mvn clean package
+  mvn clean package -DskipTests
 
 - build the image:
 
