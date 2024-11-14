@@ -9,4 +9,12 @@ import org.springframework.stereotype.Component;
 @Value
 public class Tetramino {
     char[][] shape;
+
+    public char[][] getShape() {
+        return shape;
+    }
+
+    public Tetramino(char[][] shape) {
+        this.shape = shape;
+    }
 }

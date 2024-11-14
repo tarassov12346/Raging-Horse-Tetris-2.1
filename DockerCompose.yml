@@ -15,7 +15,7 @@ services:
     depends_on:
       - postgresqldb
       - mongo
-      - playwright
+
 
   postgresqldb:
     image: postgres
@@ -34,11 +34,8 @@ services:
     container_name: springboot-mongo
     #    ports:  # for demo/debug purpose only
     #      - 27018:27017
-    restart: always
 
-  playwright:
-    image: mcr.microsoft.com/playwright/java:v1.30.0-focal
-    build:
-      context: ./
+
+
 
 

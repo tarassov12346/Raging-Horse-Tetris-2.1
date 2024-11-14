@@ -12,6 +12,14 @@ import org.springframework.stereotype.Component;
 @Table(name = "player5")
 public class Player {
 
+    public String getPlayerName() {
+        return playerName;
+    }
+
+    public int getPlayerScore() {
+        return playerScore;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
