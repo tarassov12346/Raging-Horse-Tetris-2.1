@@ -23,6 +23,9 @@
 <div id="controls">
    <button id="startGameButton" type="button" class="buttonStart" onclick="start()" >Start</button>
    <button id="profileButton" type="button" class="buttonProfile" onclick="profile()" >Your Profile</button>
+
+   <button id="registrationButton" type="button" class="buttonRegistration" onclick="register()" >Admin</button>
+
 </div>
 
 <script>
@@ -36,6 +39,10 @@ function start() {
 
 function profile() {
  window.location='/profile';
+}
+
+function register() {
+ window.location='/register';
 }
 
 

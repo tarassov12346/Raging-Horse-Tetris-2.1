@@ -6,14 +6,19 @@ import com.app.game.tetris.config.SaveGameConfiguration;
 import com.app.game.tetris.config.StartGameConfiguration;
 import com.app.game.tetris.daoservice.DaoMongoService;
 import com.app.game.tetris.daoservice.DaoService;
+import com.app.game.tetris.daoserviceImpl.UserService;
 import com.app.game.tetris.model.Player;
 import com.app.game.tetris.model.SavedGame;
+import com.app.game.tetris.model.User;
 import com.app.game.tetris.serviceImpl.State;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -48,6 +53,9 @@ public class GameController {
     @Autowired
     private RestartGameConfiguration restartGameConfiguration;
 
+    @Autowired
+    private UserService userService;
+
     @GetMapping({
             "/hello"
     })
@@ -57,7 +65,7 @@ public class GameController {
         player = startGameConfiguration.createPlayer();
         state = startGameConfiguration.initiateState();
         daoService.retrieveScores();
-    //    daoMongoService.runMongoServer();
+        daoMongoService.runMongoServer();
         makeHelloView();
         return "hello";
     }
@@ -75,6 +83,13 @@ public class GameController {
         if (!daoMongoService.isMongoDBNotEmpty()) daoMongoService.prepareMongoDB();
         makeProfileView();
         return "profile";
+    }
+
+    @GetMapping({"/register"})
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String register() {
+
+        return "registration";
     }
 
     @GetMapping({"/{moveId}"})
@@ -186,7 +201,7 @@ public class GameController {
 
     @GetMapping({"/getSnapShot"})
     public void getSnapShot(HttpServletRequest request,
-                         HttpServletResponse response) {
+                            HttpServletResponse response) {
         byte[] imagenEnBytes = daoMongoService.loadByteArrayFromMongodb(player.getPlayerName(), "deskTopSnapShot");
         response.setHeader("Accept-ranges", "bytes");
         response.setContentType("image/jpeg");
@@ -207,7 +222,7 @@ public class GameController {
 
     @GetMapping({"/getSnapShotBest"})
     public void getSnapShotBest(HttpServletRequest request,
-                            HttpServletResponse response) {
+                                HttpServletResponse response) {
         byte[] imagenEnBytes = daoMongoService.loadByteArrayFromMongodb(player.getPlayerName(), "deskTopSnapShotBest");
         response.setHeader("Accept-ranges", "bytes");
         response.setContentType("image/jpeg");

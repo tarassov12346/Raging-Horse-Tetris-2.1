@@ -29,7 +29,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<!-- <scope>provided</scope> -->
-			<scope>provided</scope>
+
 		</dependency>
 		<dependency>
 			<groupId>com.microsoft.playwright</groupId>
@@ -45,6 +45,12 @@
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 		<dependency>
 			<groupId>org.glassfish.web</groupId>
 			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
@@ -152,6 +158,7 @@
 			<artifactId>gherkin</artifactId>
 			<version>26.1.0</version>
 		</dependency>
+
 	</dependencies>
 	<profiles>
 		<profile>

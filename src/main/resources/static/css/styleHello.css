@@ -18,6 +18,11 @@ body {
     color: #fff;
 }
 
+.buttonRegistration {
+    background-color:#0a0a11;
+    color: #fff;
+}
+
 #header{text-align: center;}
 
 img.displayed {
