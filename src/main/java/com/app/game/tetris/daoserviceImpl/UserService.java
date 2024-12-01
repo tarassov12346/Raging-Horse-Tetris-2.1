@@ -1,11 +1,13 @@
 package com.app.game.tetris.daoserviceImpl;
 
+import com.app.game.tetris.daoservice.PlayerService;
 import com.app.game.tetris.model.User;
 import com.app.game.tetris.repository.UserRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,7 +18,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Data
-public class UserService implements UserDetailsService {
+public class UserService implements UserDetailsService, PlayerService {
 
     @Autowired
     UserRepository userRepository;
@@ -32,5 +34,12 @@ public class UserService implements UserDetailsService {
                 user.getPassword(),
                 authorities
         );
+    }
+
+    @Override
+    public String retrievePlayerName() {
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication()
+                .getPrincipal();
+        return userDetails.getUsername();
     }
 }

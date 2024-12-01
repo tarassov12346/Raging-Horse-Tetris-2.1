@@ -6,6 +6,7 @@ import com.app.game.tetris.config.SaveGameConfiguration;
 import com.app.game.tetris.config.StartGameConfiguration;
 import com.app.game.tetris.daoservice.DaoMongoService;
 import com.app.game.tetris.daoservice.DaoService;
+import com.app.game.tetris.daoservice.PlayerService;
 import com.app.game.tetris.daoserviceImpl.UserService;
 import com.app.game.tetris.model.Player;
 import com.app.game.tetris.model.SavedGame;
@@ -54,16 +55,18 @@ public class GameController {
     private RestartGameConfiguration restartGameConfiguration;
 
     @Autowired
-    private UserService userService;
+    private PlayerService playerService;
 
     @GetMapping({
             "/hello"
     })
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN','ROLE_USER')")
     public String hello() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         currentSession = attr.getRequest().getSession(true);
-        player = startGameConfiguration.createPlayer();
-        state = startGameConfiguration.initiateState();
+        String playerName = playerService.retrievePlayerName();
+        player=startGameConfiguration.createPlayer(playerName);
+        state = startGameConfiguration.initiateState(playerName);
         daoService.retrieveScores();
         daoMongoService.runMongoServer();
         makeHelloView();
@@ -85,11 +88,11 @@ public class GameController {
         return "profile";
     }
 
-    @GetMapping({"/register"})
+    @GetMapping({"/admin"})
     @PreAuthorize("hasRole('ROLE_ADMIN')")
-    public String register() {
+    public String administrate() {
 
-        return "registration";
+        return "admin";
     }
 
     @GetMapping({"/{moveId}"})

@@ -42,7 +42,7 @@ function profile() {
 }
 
 function register() {
- window.location='/register';
+ window.location='/admin';
 }
 
 
