@@ -7,10 +7,8 @@ import com.app.game.tetris.config.StartGameConfiguration;
 import com.app.game.tetris.daoservice.DaoMongoService;
 import com.app.game.tetris.daoservice.DaoService;
 import com.app.game.tetris.daoservice.PlayerService;
-import com.app.game.tetris.daoserviceImpl.UserService;
 import com.app.game.tetris.model.Player;
 import com.app.game.tetris.model.SavedGame;
-import com.app.game.tetris.model.User;
 import com.app.game.tetris.serviceImpl.State;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -18,9 +16,8 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -65,7 +62,7 @@ public class GameController {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         currentSession = attr.getRequest().getSession(true);
         String playerName = playerService.retrievePlayerName();
-        player=startGameConfiguration.createPlayer(playerName);
+        player = startGameConfiguration.createPlayer(playerName);
         state = startGameConfiguration.initiateState(playerName);
         daoService.retrieveScores();
         daoMongoService.runMongoServer();
@@ -91,8 +88,15 @@ public class GameController {
     @GetMapping({"/admin"})
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String administrate() {
-
+        makeAdminPageView();
         return "admin";
+    }
+
+    @GetMapping("/admin/{userId}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String deleteUser(@PathVariable Long userId) {
+        playerService.deleteUser(userId);
+        return "redirect:/admin";
     }
 
     @GetMapping({"/{moveId}"})
@@ -123,7 +127,6 @@ public class GameController {
                 state = playGameConfiguration.moveRightState(state);
             }
             case 4 -> state = playGameConfiguration.dropDownState(state);
-
         }
         makeGamePageView();
         return "index";
@@ -279,5 +282,10 @@ public class GameController {
                         new StringBuilder("/img/").append(cells[i][j]).append(".png").toString());
             }
         }
+    }
+
+    private void makeAdminPageView() {
+        currentSession.setAttribute("allUsers", playerService.getAllUsers());
+
     }
 }
