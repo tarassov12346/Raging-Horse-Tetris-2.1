@@ -23,21 +23,26 @@
             <td>
               <c:forEach items="${user.roles}" var="role">${role.name}; </c:forEach>
             </td>
-
             <td>
-
-                        <button type="submit"  onclick=window.location='/admin/${user.id}' >Delete</button>
-
+               <button type="submit"  onclick=window.location='/admin/${user.id}' >Delete</button>
             </td>
-
           </tr>
     </c:forEach>
+  </table>
 
-
+  <table>
+      <thead>
+      <th>Players Results</th>
+      </thead>
+      <c:forEach items="${playersResults}" var="player">
+                    <tr>
+                      <td>${player.id}</td>
+                      <td>${player.playerName}</td>
+                      <td>${player.playerScore}</td>
+                    </tr>
+      </c:forEach>
   </table>
   <a href="/profile">Return</a>
 </div>
-
-
 </body>
 </html>

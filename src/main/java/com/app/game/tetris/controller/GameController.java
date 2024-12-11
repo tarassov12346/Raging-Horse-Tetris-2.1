@@ -25,7 +25,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 public class GameController {
@@ -86,7 +86,7 @@ public class GameController {
     }
 
     @GetMapping({"/admin"})
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')")
     public String administrate() {
         makeAdminPageView();
         return "admin";
@@ -286,6 +286,13 @@ public class GameController {
 
     private void makeAdminPageView() {
         currentSession.setAttribute("allUsers", playerService.getAllUsers());
+        currentSession.setAttribute("playersResults", getAllBestResults(daoService.getAllPlayers()));
+    }
 
+    private Set<Player> getAllBestResults(List<Player> playersList) {
+        Set<Player> highestScoringPlayers = new HashSet<>();
+        playersList.sort(Comparator.comparingInt(Player::getPlayerScore).reversed());
+        highestScoringPlayers.addAll(playersList);
+        return highestScoringPlayers;
     }
 }

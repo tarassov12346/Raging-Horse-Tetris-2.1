@@ -55,6 +55,11 @@ public class Dao implements DaoService {
     }
 
     @Override
+    public List<Player> getAllPlayers() {
+        return playerRepository.findAll();
+    }
+
+    @Override
     public String getBestPlayer() {
         return bestPlayer;
     }

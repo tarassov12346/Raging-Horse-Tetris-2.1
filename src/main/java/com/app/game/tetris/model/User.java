@@ -15,10 +15,11 @@ import java.util.Set;
 @NoArgsConstructor
 @Table(name = "t_user")
 public class User {
-    @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Id
     @Column(nullable = false, unique = true)
     private String username;
 
