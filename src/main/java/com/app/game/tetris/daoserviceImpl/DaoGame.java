@@ -1,8 +1,8 @@
 package com.app.game.tetris.daoserviceImpl;
 
-import com.app.game.tetris.daoservice.DaoService;
-import com.app.game.tetris.model.Player;
-import com.app.game.tetris.repository.PlayerRepository;
+import com.app.game.tetris.daoservice.DaoGameService;
+import com.app.game.tetris.model.Game;
+import com.app.game.tetris.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,24 +13,24 @@ import java.util.List;
 
 
 @Service
-public class Dao implements DaoService {
+public class DaoGame implements DaoGameService {
     public String bestPlayer = "To be shown";
     public int bestScore;
     public int playerBestScore;
     public int playerAttemptsNumber;
 
     @Autowired
-    private PlayerRepository playerRepository;
+    private GameRepository gameRepository;
 
     @Override
-    public void recordScore(Player player) {
-        playerRepository.save(player);
+    public void recordScore(Game game) {
+        gameRepository.save(game);
     }
 
     @Override
     public void retrieveScores() {
-        List<Player> playerList = playerRepository.findAll();
-        Collections.sort(playerList, Comparator.comparingInt(Player::getPlayerScore));
+        List<Game> playerList = gameRepository.findAll();
+        Collections.sort(playerList, Comparator.comparingInt(Game::getPlayerScore));
         if (playerList.size() > 0) {
             bestPlayer = playerList.get(playerList.size() - 1).getPlayerName();
             bestScore = playerList.get(playerList.size() - 1).getPlayerScore();
@@ -41,13 +41,13 @@ public class Dao implements DaoService {
     }
 
     @Override
-    public void retrievePlayerScores(Player player) {
-        List<Player> playerByNameList = new ArrayList<>();
-        List<Player> playerList = playerRepository.findAll();
+    public void retrievePlayerScores(Game game) {
+        List<Game> playerByNameList = new ArrayList<>();
+        List<Game> playerList = gameRepository.findAll();
         playerList.forEach(allPlayer -> {
-            if (allPlayer.getPlayerName().equals(player.getPlayerName())) playerByNameList.add(allPlayer);
+            if (allPlayer.getPlayerName().equals(game.getPlayerName())) playerByNameList.add(allPlayer);
         });
-        Collections.sort(playerByNameList, Comparator.comparingInt(Player::getPlayerScore));
+        Collections.sort(playerByNameList, Comparator.comparingInt(Game::getPlayerScore));
         if (playerByNameList.size() > 0)
             playerBestScore = playerByNameList.get(playerByNameList.size() - 1).getPlayerScore();
         else playerBestScore = 0;
@@ -55,8 +55,8 @@ public class Dao implements DaoService {
     }
 
     @Override
-    public List<Player> getAllPlayers() {
-        return playerRepository.findAll();
+    public List<Game> getAllGames() {
+        return gameRepository.findAll();
     }
 
     @Override

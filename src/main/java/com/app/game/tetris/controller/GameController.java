@@ -5,9 +5,9 @@ import com.app.game.tetris.config.RestartGameConfiguration;
 import com.app.game.tetris.config.SaveGameConfiguration;
 import com.app.game.tetris.config.StartGameConfiguration;
 import com.app.game.tetris.daoservice.DaoMongoService;
-import com.app.game.tetris.daoservice.DaoService;
-import com.app.game.tetris.daoservice.PlayerService;
-import com.app.game.tetris.model.Player;
+import com.app.game.tetris.daoservice.DaoGameService;
+import com.app.game.tetris.daoservice.DaoUserService;
+import com.app.game.tetris.model.Game;
 import com.app.game.tetris.model.SavedGame;
 import com.app.game.tetris.serviceImpl.State;
 import jakarta.servlet.http.HttpServletRequest;
@@ -30,7 +30,7 @@ import java.util.*;
 @Controller
 public class GameController {
     private HttpSession currentSession;
-    private Player player;
+    private Game player;
     private State state;
 
     @Autowired
@@ -40,7 +40,7 @@ public class GameController {
     private PlayGameConfiguration playGameConfiguration;
 
     @Autowired
-    private DaoService daoService;
+    private DaoGameService daoGameService;
 
     @Autowired
     private DaoMongoService daoMongoService;
@@ -52,7 +52,7 @@ public class GameController {
     private RestartGameConfiguration restartGameConfiguration;
 
     @Autowired
-    private PlayerService playerService;
+    private DaoUserService daoUserService;
 
     @GetMapping({
             "/hello"
@@ -61,10 +61,10 @@ public class GameController {
     public String hello() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         currentSession = attr.getRequest().getSession(true);
-        String playerName = playerService.retrievePlayerName();
-        player = startGameConfiguration.createPlayer(playerName);
+        String playerName = daoUserService.retrievePlayerName();
+        player = startGameConfiguration.createGame(playerName);
         state = startGameConfiguration.initiateState(playerName);
-        daoService.retrieveScores();
+        daoGameService.retrieveScores();
         daoMongoService.runMongoServer();
         makeHelloView();
         return "hello";
@@ -79,7 +79,7 @@ public class GameController {
 
     @GetMapping({"/profile"})
     public String profile() {
-        daoService.retrievePlayerScores(player);
+        daoGameService.retrievePlayerScores(player);
         if (!daoMongoService.isMongoDBNotEmpty()) daoMongoService.prepareMongoDB();
         makeProfileView();
         return "profile";
@@ -95,7 +95,7 @@ public class GameController {
     @GetMapping("/admin/{userId}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteUser(@PathVariable Long userId) {
-        playerService.deleteUser(userId);
+        daoUserService.deleteUser(userId);
         return "redirect:/admin";
     }
 
@@ -137,12 +137,12 @@ public class GameController {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         currentSession = attr.getRequest().getSession(true);
         currentSession.setAttribute("gameStatus", "Game over");
-        daoService.recordScore(player);
-        daoService.retrieveScores();
+        daoGameService.recordScore(player);
+        daoGameService.retrieveScores();
         daoMongoService.makeDesktopSnapshot("deskTopSnapShot");
         daoMongoService.cleanMongodb(player.getPlayerName(), "deskTopSnapShot");
         daoMongoService.loadSnapShotIntoMongodb(player.getPlayerName(), "deskTopSnapShot");
-        if (player.getPlayerScore() >= daoService.getPlayerBestScore()) {
+        if (player.getPlayerScore() >= daoGameService.getPlayerBestScore()) {
             daoMongoService.makeDesktopSnapshot("deskTopSnapShotBest");
             daoMongoService.cleanMongodb(player.getPlayerName(), "deskTopSnapShotBest");
             daoMongoService.loadSnapShotIntoMongodb(player.getPlayerName(), "deskTopSnapShotBest");
@@ -254,27 +254,27 @@ public class GameController {
     }
 
     private void makeHelloView() {
-        player = state.getPlayer();
+        player = state.getGame();
         currentSession.setAttribute("player", player.getPlayerName());
-        currentSession.setAttribute("bestPlayer", daoService.getBestPlayer());
-        currentSession.setAttribute("bestScore", daoService.getBestScore());
+        currentSession.setAttribute("bestPlayer", daoGameService.getBestPlayer());
+        currentSession.setAttribute("bestScore", daoGameService.getBestScore());
     }
 
     private void makeProfileView() {
-        player = state.getPlayer();
+        player = state.getGame();
         currentSession.setAttribute("player", player.getPlayerName());
-        currentSession.setAttribute("playerBestScore", daoService.getPlayerBestScore());
-        currentSession.setAttribute("playerAttemptsNumber", daoService.getPlayerAttemptsNumber());
+        currentSession.setAttribute("playerBestScore", daoGameService.getPlayerBestScore());
+        currentSession.setAttribute("playerAttemptsNumber", daoGameService.getPlayerAttemptsNumber());
     }
 
     private void makeGamePageView() {
         char[][] cells = state.getStage().drawTetraminoOnCells();
-        player = state.getPlayer();
+        player = state.getGame();
         state.setStepDown(player.getPlayerScore() / 10 + 1);
         currentSession.setAttribute("player", player.getPlayerName());
         currentSession.setAttribute("score", player.getPlayerScore());
-        currentSession.setAttribute("bestplayer", daoService.getBestPlayer());
-        currentSession.setAttribute("bestscore", daoService.getBestScore());
+        currentSession.setAttribute("bestplayer", daoGameService.getBestPlayer());
+        currentSession.setAttribute("bestscore", daoGameService.getBestScore());
         currentSession.setAttribute("stepdown", state.getStepDown());
         for (int i = 0; i < 20; i++) {
             for (int j = 0; j < 12; j++) {
@@ -285,13 +285,13 @@ public class GameController {
     }
 
     private void makeAdminPageView() {
-        currentSession.setAttribute("allUsers", playerService.getAllUsers());
-        currentSession.setAttribute("playersResults", getAllBestResults(daoService.getAllPlayers()));
+        currentSession.setAttribute("allUsers", daoUserService.getAllUsers());
+        currentSession.setAttribute("playersResults", getAllBestResults(daoGameService.getAllGames()));
     }
 
-    private Set<Player> getAllBestResults(List<Player> playersList) {
-        Set<Player> highestScoringPlayers = new HashSet<>();
-        playersList.sort(Comparator.comparingInt(Player::getPlayerScore).reversed());
+    private Set<Game> getAllBestResults(List<Game> playersList) {
+        Set<Game> highestScoringPlayers = new HashSet<>();
+        playersList.sort(Comparator.comparingInt(Game::getPlayerScore).reversed());
         highestScoringPlayers.addAll(playersList);
         return highestScoringPlayers;
     }

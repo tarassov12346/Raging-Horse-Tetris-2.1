@@ -1,6 +1,6 @@
 package com.app.game.tetris.config;
 
-import com.app.game.tetris.model.Player;
+import com.app.game.tetris.model.Game;
 import com.app.game.tetris.model.SavedGame;
 import com.app.game.tetris.model.Tetramino;
 import com.app.game.tetris.serviceImpl.Stage;
@@ -24,9 +24,9 @@ public class RestartGameConfiguration {
         FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\save.ser");
         ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
         SavedGame savedGame = (SavedGame) objectInputStream.readObject();
-        Player player = context.getBean(Player.class, savedGame.getPlayerName(), savedGame.getPlayerScore());
-        Stage recreatedStage = context.getBean(Stage.class, savedGame.getCells(), getTetramino0(), 0, 0, player.getPlayerScore() / 10);
-        return context.getBean(State.class, recreatedStage, true, player).restartWithNewTetramino().orElse(context.getBean(State.class, recreatedStage, true, player));
+        Game game = context.getBean(Game.class, savedGame.getPlayerName(), savedGame.getPlayerScore());
+        Stage recreatedStage = context.getBean(Stage.class, savedGame.getCells(), getTetramino0(), 0, 0, game.getPlayerScore() / 10);
+        return context.getBean(State.class, recreatedStage, true, game).restartWithNewTetramino().orElse(context.getBean(State.class, recreatedStage, true, game));
     }
 
     private Tetramino getTetramino0(){

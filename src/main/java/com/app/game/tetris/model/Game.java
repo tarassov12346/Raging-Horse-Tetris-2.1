@@ -11,8 +11,8 @@ import java.util.Objects;
 @Scope("prototype")
 @Data
 @Entity
-@Table(name = "player5")
-public class Player {
+@Table(name = "games")
+public class Game {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,10 +25,10 @@ public class Player {
     @Column(name = "score")
     private int playerScore;
 
-    public Player() {
+    public Game() {
     }
 
-    public Player(String playerName, int playerScore) {
+    public Game(String playerName, int playerScore) {
         this.playerName = playerName;
         this.playerScore = playerScore;
     }
@@ -49,7 +49,7 @@ public class Player {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Player player = (Player) o;
+        Game player = (Game) o;
         return Objects.equals(getPlayerName(), player.getPlayerName());
     }
 

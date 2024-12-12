@@ -4,7 +4,7 @@ import com.app.game.tetris.model.User;
 
 import java.util.List;
 
-public interface PlayerService {
+public interface DaoUserService {
     String retrievePlayerName();
     List<User> getAllUsers();
     boolean deleteUser(Long userId);

@@ -1,10 +1,9 @@
 package com.app.game.tetris.serviceImpl;
 
-import com.app.game.tetris.model.Player;
+import com.app.game.tetris.model.Game;
 import com.app.game.tetris.model.Tetramino;
 import com.app.game.tetris.service.GameLogic;
 import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -14,13 +13,13 @@ import java.util.*;
 public class State implements GameLogic<Optional<State>> {
     private final Stage stage;
     private final boolean isRunning;
-    private final Player player;
+    private final Game game;
     private int stepDown = 1;
 
-    public State(Stage stage, boolean isRunning, Player player) {
+    public State(Stage stage, boolean isRunning, Game game) {
         this.stage = Objects.requireNonNull(stage);
         this.isRunning = isRunning;
-        this.player = player;
+        this.game = game;
     }
 
     @Override
@@ -28,21 +27,21 @@ public class State implements GameLogic<Optional<State>> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         State state = (State) o;
-        return isRunning == state.isRunning && stage.equals(state.stage) && player.equals(state.player);
+        return isRunning == state.isRunning && stage.equals(state.stage) && game.equals(state.game);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(stage, isRunning, player);
+        return Objects.hash(stage, isRunning, game);
     }
 
 
     public State start() {
-        return new State(stage, true, player);
+        return new State(stage, true, game);
     }
 
     public void stop() {
-        new State(stage, false, player);
+        new State(stage, false, game);
     }
 
     @Override
@@ -81,17 +80,17 @@ public class State implements GameLogic<Optional<State>> {
 
     @Override
     public Optional<State> setTetramino(Tetramino tetramino, int x, int y) {
-        return Optional.of(new State(stage.setTetramino(tetramino, x, y), isRunning, player));
+        return Optional.of(new State(stage.setTetramino(tetramino, x, y), isRunning, game));
     }
 
     @Override
     public Optional<State> addTetramino() {
-        return Optional.of(new State(stage.addTetramino(), isRunning, player));
+        return Optional.of(new State(stage.addTetramino(), isRunning, game));
     }
 
     @Override
     public Optional<State> collapseFilledLayers() {
-        return Optional.of(new State(stage.collapseFilledLayers(), isRunning, player));
+        return Optional.of(new State(stage.collapseFilledLayers(), isRunning, game));
     }
 
     @Override
@@ -131,8 +130,8 @@ public class State implements GameLogic<Optional<State>> {
         return isRunning;
     }
 
-    public Player getPlayer() {
-        return player;
+    public Game getGame() {
+        return game;
     }
 
     public int getStepDown() {
@@ -144,25 +143,25 @@ public class State implements GameLogic<Optional<State>> {
     }
 
     private State updatePlayerScore() {
-        player.setPlayerScore(stage.getCollapsedLayersCount());
+        game.setPlayerScore(stage.getCollapsedLayersCount());
         stepDown = 1 + stage.getCollapsedLayersCount();
-        return new State(stage.collapseFilledLayers(), isRunning, player);
+        return new State(stage.collapseFilledLayers(), isRunning, game);
     }
 
     private State moveTetraminoDown(int yToMoveDown) {
-        return new State(stage.moveDown(yToMoveDown), isRunning, player);
+        return new State(stage.moveDown(yToMoveDown), isRunning, game);
     }
 
     private State moveTetraminoLeft() {
-        return new State(stage.moveLeft(), isRunning, player);
+        return new State(stage.moveLeft(), isRunning, game);
     }
 
     private State moveTetraminoRight() {
-        return new State(stage.moveRight(), isRunning, player);
+        return new State(stage.moveRight(), isRunning, game);
     }
 
     private State rotateTetramino() {
-        return new State(stage.rotate(), isRunning, player);
+        return new State(stage.rotate(), isRunning, game);
     }
 
     private Tetramino getRandomTetramino() {

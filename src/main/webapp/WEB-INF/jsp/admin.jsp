@@ -12,7 +12,7 @@
 <div>
   <table>
     <thead>
-    <th>UserName</th>
+    <th>ALL REGISTERED USERS</th>
     </thead>
 
     <c:forEach items="${allUsers}" var="user">
@@ -32,7 +32,7 @@
 
   <table>
       <thead>
-      <th>Players Results</th>
+      <th>USERS BEST SCORES</th>
       </thead>
       <c:forEach items="${playersResults}" var="player">
                     <tr>

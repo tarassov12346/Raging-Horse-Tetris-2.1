@@ -1,6 +1,6 @@
 package com.app.game.tetris.config;
 
-import com.app.game.tetris.model.Player;
+import com.app.game.tetris.model.Game;
 import com.app.game.tetris.model.Tetramino;
 import com.app.game.tetris.service.GameLogic;
 import com.app.game.tetris.serviceImpl.Stage;
@@ -17,13 +17,13 @@ public class StartGameConfiguration {
     @Autowired
     private ApplicationContext context;
 
-    public Player createPlayer(String playerName) {
-        return context.getBean(Player.class, playerName, 0);
+    public Game createGame(String playerName) {
+        return context.getBean(Game.class, playerName, 0);
     }
 
     public State initiateState(String playerName) {
         Stage emptyStage = context.getBean(Stage.class, makeEmptyMatrix(), getTetramino0(), 0, 0, 0);
-        State initialState = context.getBean(State.class, emptyStage, false, createPlayer(playerName));
+        State initialState = context.getBean(State.class, emptyStage, false, createGame(playerName));
         return initialState.start().createStateWithNewTetramino().orElse(initialState);
     }
 

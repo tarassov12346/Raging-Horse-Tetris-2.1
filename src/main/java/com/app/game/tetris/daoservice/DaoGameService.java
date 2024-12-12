@@ -1,17 +1,17 @@
 package com.app.game.tetris.daoservice;
 
-import com.app.game.tetris.model.Player;
+import com.app.game.tetris.model.Game;
 
 import java.util.List;
 
-public interface DaoService {
-    void recordScore(Player player);
+public interface DaoGameService {
+    void recordScore(Game game);
 
     void retrieveScores();
 
-    void retrievePlayerScores(Player player);
+    void retrievePlayerScores(Game game);
 
-    List<Player> getAllPlayers();
+    List<Game> getAllGames();
 
     String getBestPlayer();
 

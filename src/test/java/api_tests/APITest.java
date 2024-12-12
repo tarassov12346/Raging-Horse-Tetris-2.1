@@ -6,7 +6,7 @@ import com.app.game.tetris.config.RestartGameConfiguration;
 import com.app.game.tetris.config.SaveGameConfiguration;
 import com.app.game.tetris.config.StartGameConfiguration;
 import com.app.game.tetris.controller.GameController;
-import com.app.game.tetris.model.Player;
+import com.app.game.tetris.model.Game;
 import com.app.game.tetris.model.Tetramino;
 import com.app.game.tetris.serviceImpl.Stage;
 import com.app.game.tetris.serviceImpl.State;
@@ -33,7 +33,7 @@ import static io.restassured.RestAssured.given;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT,
         classes = {GameController.class, StartGameConfiguration.class,
                 PlayGameConfiguration.class, SaveGameConfiguration.class,
-                RestartGameConfiguration.class, Player.class, Tetramino.class, Stage.class, State.class,
+                RestartGameConfiguration.class, Game.class, Tetramino.class, Stage.class, State.class,
                 TetrisNewApplication.class, APITestService.class})
 @DirtiesContext(classMode= DirtiesContext.ClassMode.AFTER_CLASS)
 public class APITest extends AbstractTestNGSpringContextTests{

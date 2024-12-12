@@ -6,7 +6,7 @@ import com.app.game.tetris.config.RestartGameConfiguration;
 import com.app.game.tetris.config.SaveGameConfiguration;
 import com.app.game.tetris.config.StartGameConfiguration;
 import com.app.game.tetris.controller.GameController;
-import com.app.game.tetris.model.Player;
+import com.app.game.tetris.model.Game;
 import com.app.game.tetris.model.Tetramino;
 import com.app.game.tetris.serviceImpl.Stage;
 import com.app.game.tetris.serviceImpl.State;
@@ -21,7 +21,7 @@ import org.testng.annotations.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT,
         classes = {GameController.class, StartGameConfiguration.class,
                 PlayGameConfiguration.class, SaveGameConfiguration.class,
-                RestartGameConfiguration.class, Player.class, Tetramino.class, Stage.class, State.class,
+                RestartGameConfiguration.class, Game.class, Tetramino.class, Stage.class, State.class,
                 TetrisNewApplication.class, UnitTestService.class})
 @DirtiesContext(classMode= DirtiesContext.ClassMode.AFTER_CLASS)
 public class UnitTest extends AbstractTestNGSpringContextTests {
@@ -42,7 +42,7 @@ public class UnitTest extends AbstractTestNGSpringContextTests {
 
     @DataProvider
     public Object[][] data() {
-        return new State[][]{{new State(unitTestService.makeStageWith2FilledRows(), true, new Player("Tester", 0)),}, {new State(unitTestService.makeStageWith3FilledRows(), true, new Player("Tester", 0))}};
+        return new State[][]{{new State(unitTestService.makeStageWith2FilledRows(), true, new Game("Tester", 0)),}, {new State(unitTestService.makeStageWith3FilledRows(), true, new Game("Tester", 0))}};
     }
 
     @Test(dataProvider = "data", groups = {"rowsProcessingChecks"})
@@ -56,8 +56,8 @@ public class UnitTest extends AbstractTestNGSpringContextTests {
         int tetraminoY = newState.getStage().getTetraminoY();
         int collapsedLayersCount = newState.getStage().getCollapsedLayersCount();
         log.info("collapsed layers count=" + collapsedLayersCount);
-        log.info("players score =" + newState.getPlayer().getPlayerScore());
-        State expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, tetraminoX, tetraminoY), true, new Player("Tester", collapsedLayersCount * 10));
+        log.info("players score =" + newState.getGame().getPlayerScore());
+        State expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, tetraminoX, tetraminoY), true, new Game("Tester", collapsedLayersCount * 10));
         Assert.assertEquals(newState, expectedState);
     }
 
@@ -71,7 +71,7 @@ public class UnitTest extends AbstractTestNGSpringContextTests {
         State newState = stateWithNewTetramino.moveRight().orElse(stateWithNewTetramino);
         Tetramino tetramino = newState.getStage().getTetramino();
         int collapsedLayersCount = newState.getStage().getCollapsedLayersCount();
-        State expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, tetraminoX + 1, tetraminoY), true, new Player("Tester", collapsedLayersCount * 10));
+        State expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, tetraminoX + 1, tetraminoY), true, new Game("Tester", collapsedLayersCount * 10));
         log.info("Tetramino initial position x=" + tetraminoX + " y=" + tetraminoY);
         log.info("moveRight is called");
         log.info("Tetramino after moveRight new position x=" + newState.getStage().getTetraminoX() + " y=" + newState.getStage().getTetraminoY());
@@ -90,8 +90,8 @@ public class UnitTest extends AbstractTestNGSpringContextTests {
         Tetramino tetramino = newState.getStage().getTetramino();
         int collapsedLayersCount = newState.getStage().getCollapsedLayersCount();
         switch (unitTestService.getShapeTypeByTetramino(newState.getStage().getTetramino()).toString()) {
-            case "O", "J", "I" -> expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, 10, tetraminoY), true, new Player("Tester", collapsedLayersCount * 10));
-            default -> expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, 9, tetraminoY), true, new Player("Tester", collapsedLayersCount * 10));
+            case "O", "J", "I" -> expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, 10, tetraminoY), true, new Game("Tester", collapsedLayersCount * 10));
+            default -> expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, 9, tetraminoY), true, new Game("Tester", collapsedLayersCount * 10));
         }
         log.info("Tetramino initial position x=" + tetraminoX + " y=" + tetraminoY);
         log.info("moveRight 13 times is performed");
@@ -110,7 +110,7 @@ public class UnitTest extends AbstractTestNGSpringContextTests {
         State newState = stateWithNewTetramino.moveLeft().orElse(stateWithNewTetramino);
         Tetramino tetramino = newState.getStage().getTetramino();
         int collapsedLayersCount = newState.getStage().getCollapsedLayersCount();
-        State expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, tetraminoX - 1, tetraminoY), true, new Player("Tester", collapsedLayersCount * 10));
+        State expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, tetraminoX - 1, tetraminoY), true, new Game("Tester", collapsedLayersCount * 10));
         log.info("Tetramino initial position x=" + stateWithNewTetramino.getStage().getTetraminoX() + " y=" + stateWithNewTetramino.getStage().getTetraminoY());
         log.info("moveLeft is called");
         log.info("Tetramino after moveLeft new position x=" + newState.getStage().getTetraminoX() + " y=" + newState.getStage().getTetraminoY());
@@ -129,8 +129,8 @@ public class UnitTest extends AbstractTestNGSpringContextTests {
         Tetramino tetramino = newState.getStage().getTetramino();
         int collapsedLayersCount = newState.getStage().getCollapsedLayersCount();
         switch (unitTestService.getShapeTypeByTetramino(newState.getStage().getTetramino()).toString()) {
-            case "L", "I" -> expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, -1, tetraminoY), true, new Player("Tester", collapsedLayersCount * 10));
-            default -> expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, 0, tetraminoY), true, new Player("Tester", collapsedLayersCount * 10));
+            case "L", "I" -> expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, -1, tetraminoY), true, new Game("Tester", collapsedLayersCount * 10));
+            default -> expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, 0, tetraminoY), true, new Game("Tester", collapsedLayersCount * 10));
         }
         log.info("Tetramino initial position x=" + tetraminoX + " y=" + tetraminoY);
         log.info("moveLeft 13 times is performed");
@@ -149,7 +149,7 @@ public class UnitTest extends AbstractTestNGSpringContextTests {
         State newState = stateWithNewTetramino.moveDown(1).orElse(stateWithNewTetramino);
         Tetramino tetramino = newState.getStage().getTetramino();
         int collapsedLayersCount = newState.getStage().getCollapsedLayersCount();
-        State expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, tetraminoX, tetraminoY + 1), true, new Player("Tester", collapsedLayersCount * 10));
+        State expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, tetraminoX, tetraminoY + 1), true, new Game("Tester", collapsedLayersCount * 10));
         log.info("Tetramino initial position x=" + stateWithNewTetramino.getStage().getTetraminoX() + " y=" + stateWithNewTetramino.getStage().getTetraminoY());
         log.info("moveDown is called");
         log.info("Tetramino after moveDown with step 1 new position x=" + newState.getStage().getTetraminoX() + " y=" + newState.getStage().getTetraminoY());
@@ -168,9 +168,9 @@ public class UnitTest extends AbstractTestNGSpringContextTests {
         Tetramino tetramino = newState.getStage().getTetramino();
         int collapsedLayersCount = newState.getStage().getCollapsedLayersCount();
         switch (unitTestService.getShapeTypeByTetramino(newState.getStage().getTetramino()).toString()) {
-            case "L", "J" -> expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, tetraminoX, 15), true, new Player("Tester", collapsedLayersCount * 10));
-            case "K" -> expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, tetraminoX, 17), true, new Player("Tester", collapsedLayersCount * 10));
-            default -> expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, tetraminoX, 16), true, new Player("Tester", collapsedLayersCount * 10));
+            case "L", "J" -> expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, tetraminoX, 15), true, new Game("Tester", collapsedLayersCount * 10));
+            case "K" -> expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, tetraminoX, 17), true, new Game("Tester", collapsedLayersCount * 10));
+            default -> expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(tetramino, tetraminoX, 16), true, new Game("Tester", collapsedLayersCount * 10));
         }
         log.info("Tetramino initial position x=" + tetraminoX + " y=" + tetraminoY);
         log.info("moveDown 25 times is performed");
@@ -189,7 +189,7 @@ public class UnitTest extends AbstractTestNGSpringContextTests {
         State newState = stateWithNewTetramino.rotate().orElse(stateWithNewTetramino);
         Tetramino newTetramino = new Tetramino(unitTestService.rotateMatrix(stateWithNewTetramino.getStage().getTetramino().getShape()));
         int collapsedLayersCount = newState.getStage().getCollapsedLayersCount();
-        State expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(newTetramino, tetraminoX, tetraminoY), true, new Player("Tester", collapsedLayersCount * 10));
+        State expectedState = new State(unitTestService.makeStageWithOnlyLeftUnfilledRows(collapsedLayersCount).setTetramino(newTetramino, tetraminoX, tetraminoY), true, new Game("Tester", collapsedLayersCount * 10));
         log.info("Tetramino initial shape " + unitTestService.matrixToString(stateWithNewTetramino.getStage().getTetramino().getShape()));
         log.info("Tetramino after rotate new shape " + unitTestService.matrixToString(newState.getStage().getTetramino().getShape()));
         Assert.assertEquals(newState, expectedState);

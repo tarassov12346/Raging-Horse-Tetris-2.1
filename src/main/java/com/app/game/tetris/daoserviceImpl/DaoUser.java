@@ -1,6 +1,6 @@
 package com.app.game.tetris.daoserviceImpl;
 
-import com.app.game.tetris.daoservice.PlayerService;
+import com.app.game.tetris.daoservice.DaoUserService;
 import com.app.game.tetris.model.User;
 import com.app.game.tetris.repository.UserRepository;
 import lombok.Data;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Service
 @Data
-public class UserService implements UserDetailsService, PlayerService {
+public class DaoUser implements UserDetailsService, DaoUserService {
 
     @Autowired
     UserRepository userRepository;
