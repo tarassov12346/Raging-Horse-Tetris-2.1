@@ -6,6 +6,7 @@ import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.options.AriaRole;
+import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
@@ -67,10 +68,27 @@ public class DaoMongo implements DaoMongoService {
         list.add("Ira");
         list.add("Wolfy");
         list.forEach(playerName -> {
-            fillMongoDB(playerName);
-            fillMongoDB(playerName + "deskTopSnapShotBest");
-            fillMongoDB(playerName + "deskTopSnapShot");
+            fillMongoDB(playerName, playerName);
+            fillMongoDB(playerName + "deskTopSnapShotBest", playerName + "deskTopSnapShotBest");
+            fillMongoDB(playerName + "deskTopSnapShot", playerName + "deskTopSnapShot");
         });
+    }
+
+    @Override
+    public void prepareMongoDBForNewPLayer(String playerName) {
+        fillMongoDB("Player", playerName);
+        fillMongoDB("PlayerdeskTopSnapShotBest", playerName + "deskTopSnapShotBest");
+        fillMongoDB("PlayerdeskTopSnapShot", playerName + "deskTopSnapShot");
+    }
+
+    @Override
+    public boolean isFilePresentInMongoDB(String fileName) {
+        String uri = mongoUri;
+        MongoClient mongoClient = MongoClients.create(uri);
+        MongoDatabase database = mongoClient.getDatabase("shopDB");
+        BasicDBObject whereQuery = new BasicDBObject();
+        whereQuery.put("filename", fileName + ".jpg");
+        return database.getCollection("fs.files").find(whereQuery).cursor().hasNext();
     }
 
     @Override
@@ -180,7 +198,7 @@ public class DaoMongo implements DaoMongoService {
         return imagenEnBytes;
     }
 
-    private void fillMongoDB(String fileName) {
+    private void fillMongoDB(String fileNameOnPC, String fileNameINDB) {
         String uri = mongoUri;
         String pathToImageMongoPreparedShots = System.getProperty("user.dir") + mongoPrepareShotsPath;
         MongoClient mongoClient = MongoClients.create(uri);
@@ -188,14 +206,14 @@ public class DaoMongo implements DaoMongoService {
         GridFSBucket gridFSBucket = GridFSBuckets.create(database);
         byte[] data = new byte[0];
         try {
-            data = Files.readAllBytes(Path.of(pathToImageMongoPreparedShots + fileName + ".jpg"));
+            data = Files.readAllBytes(Path.of(pathToImageMongoPreparedShots + fileNameOnPC + ".jpg"));
         } catch (IOException e) {
             e.printStackTrace();
         }
         GridFSUploadOptions options = new GridFSUploadOptions()
                 .chunkSizeBytes(1048576)
                 .metadata(new Document("type", "jpg"));
-        try (GridFSUploadStream uploadStream = gridFSBucket.openUploadStream(fileName + ".jpg", options)) {
+        try (GridFSUploadStream uploadStream = gridFSBucket.openUploadStream(fileNameINDB + ".jpg", options)) {
             // Writes file data to the GridFS upload stream
             uploadStream.write(data);
             uploadStream.flush();

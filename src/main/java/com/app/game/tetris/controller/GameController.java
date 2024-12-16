@@ -81,6 +81,8 @@ public class GameController {
     public String profile() {
         daoGameService.retrievePlayerScores(player);
         if (!daoMongoService.isMongoDBNotEmpty()) daoMongoService.prepareMongoDB();
+        if (!daoMongoService.isFilePresentInMongoDB(player.getPlayerName()))
+            daoMongoService.prepareMongoDBForNewPLayer(player.getPlayerName());
         makeProfileView();
         return "profile";
     }
