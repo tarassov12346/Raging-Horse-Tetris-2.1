@@ -16,15 +16,19 @@ import java.util.Set;
 @Table(name = "t_user")
 public class User {
 
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", unique = true, nullable = false, insertable = false, updatable = false)
     private Long id;
 
-    @Id
     @Column(nullable = false, unique = true)
     private String username;
 
     @Column(nullable = false, unique = true)
     private String password;
+
+    @Transient
+    private String passwordConfirm;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "t_user_roles",

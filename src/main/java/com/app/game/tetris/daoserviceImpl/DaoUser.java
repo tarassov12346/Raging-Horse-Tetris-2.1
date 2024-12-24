@@ -2,6 +2,7 @@ package com.app.game.tetris.daoserviceImpl;
 
 import com.app.game.tetris.daoservice.DaoUserService;
 import com.app.game.tetris.model.User;
+import com.app.game.tetris.repository.RoleRepository;
 import com.app.game.tetris.repository.UserRepository;
 import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +12,10 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -23,6 +26,12 @@ public class DaoUser implements UserDetailsService, DaoUserService {
 
     @Autowired
     UserRepository userRepository;
+
+    @Autowired
+    RoleRepository roleRepository;
+
+    @Autowired
+    PasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -57,5 +66,25 @@ public class DaoUser implements UserDetailsService, DaoUserService {
             return true;
         }
         return false;
+    }
+
+
+    @Override
+    public User findUserById(Long userId){
+        return userRepository.findById(userId).get();
+    }
+
+
+
+    @Override
+    public boolean saveUser(User user) {
+        User userFromDB = userRepository.findByUsername(user.getUsername());
+        if (userFromDB != null) {
+            return false;
+        }
+        user.setRoles(Collections.singleton(roleRepository.findById(2L).get()));
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        userRepository.save(user);
+        return true;
     }
 }

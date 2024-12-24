@@ -1,0 +1,8 @@
+body {
+  font-family: 'Courier New', monospace;
+  font-size: 25px;
+  background-color: rgb(50, 200, 50);
+}
+
+#images{text-align: center;}
+#controls{text-align: center;}

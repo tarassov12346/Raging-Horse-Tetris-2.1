@@ -20,4 +20,6 @@ public interface DaoGameService {
     int getPlayerBestScore();
 
     int getPlayerAttemptsNumber();
+
+    Long deleteByName(String name);
 }

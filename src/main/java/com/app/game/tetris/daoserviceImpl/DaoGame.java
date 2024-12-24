@@ -3,6 +3,7 @@ package com.app.game.tetris.daoserviceImpl;
 import com.app.game.tetris.daoservice.DaoGameService;
 import com.app.game.tetris.model.Game;
 import com.app.game.tetris.repository.GameRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -77,5 +78,11 @@ public class DaoGame implements DaoGameService {
     @Override
     public int getPlayerAttemptsNumber() {
         return playerAttemptsNumber;
+    }
+
+    @Override
+    @Transactional
+    public Long deleteByName(String name) {
+        return gameRepository.deleteByPlayerName(name);
     }
 }

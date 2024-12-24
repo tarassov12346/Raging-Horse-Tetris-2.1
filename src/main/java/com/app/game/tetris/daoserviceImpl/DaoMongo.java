@@ -5,7 +5,6 @@ import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
-import com.microsoft.playwright.options.AriaRole;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
@@ -166,10 +165,10 @@ public class DaoMongo implements DaoMongoService {
             Page page = browser.newPage();
             page.navigate("http://localhost:8080/6");
 
-            page.getByLabel("username").fill("user");
+         /*   page.getByLabel("username").fill("user");
             page.getByLabel("password").fill("mas");
             page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Sign in"))
-                    .click();
+                    .click();*/
             //   page.waitForURL("http://localhost:8080/6");
             page.screenshot(new Page.ScreenshotOptions().setPath(Paths.get(fileName)));
         }

@@ -9,6 +9,7 @@ import com.app.game.tetris.daoservice.DaoGameService;
 import com.app.game.tetris.daoservice.DaoUserService;
 import com.app.game.tetris.model.Game;
 import com.app.game.tetris.model.SavedGame;
+import com.app.game.tetris.model.User;
 import com.app.game.tetris.serviceImpl.State;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -16,11 +17,16 @@ import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.validation.Valid;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -53,6 +59,33 @@ public class GameController {
 
     @Autowired
     private DaoUserService daoUserService;
+
+    @GetMapping({"/register"})
+    public String registration(Model model) {
+        model.addAttribute("userForm", new User());
+        return "registration";
+    }
+
+    @GetMapping({"/registered"})
+    public String registrationOK(Model model) {
+        return "registered";
+    }
+
+    @PostMapping("/register")
+    public String addUser(@ModelAttribute("userForm") @Valid User userForm, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "registration";
+        }
+        if (!userForm.getPassword().equals(userForm.getPasswordConfirm())) {
+            model.addAttribute("passwordError", "Passwords do not match!");
+            return "registration";
+        }
+        if (!daoUserService.saveUser(userForm)) {
+            model.addAttribute("usernameError", "The player with such name already exists!");
+            return "registration";
+        }
+        return "registered";
+    }
 
     @GetMapping({
             "/hello"
@@ -97,6 +130,10 @@ public class GameController {
     @GetMapping("/admin/{userId}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteUser(@PathVariable Long userId) {
+        daoMongoService.cleanMongodb(daoUserService.findUserById(userId).getUsername(), "");
+        daoMongoService.cleanMongodb(daoUserService.findUserById(userId).getUsername(), "deskTopSnapShot");
+        daoMongoService.cleanMongodb(daoUserService.findUserById(userId).getUsername(), "deskTopSnapShotBest");
+        daoGameService.deleteByName(daoUserService.findUserById(userId).getUsername());
         daoUserService.deleteUser(userId);
         return "redirect:/admin";
     }
