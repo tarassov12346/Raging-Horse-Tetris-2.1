@@ -6,14 +6,47 @@
 <head>
   <meta charset="utf-8">
   <title>GameAdministration</title>
+  <link href="/css/styleAdminPage.css" rel="stylesheet">
+
+  <style>
+          h1 {
+             text-align: center;
+          },
+          h2 {
+              text-align: center;
+          },
+          table,
+          thead,
+          td,
+          th {
+              border: 1px solid;
+              padding: 20px;
+              text-align: center;
+          }
+
+          table {
+              text-align: center;
+          }
+
+          thead {
+              text-align: center;
+         }
+      </style>
 </head>
 
 <body>
-<div>
-  <table>
+<div
+id="user">
+<h1>ALL REGISTERED USERS</h1>
+  <table
+  id="t1">
     <thead>
-    <th>ALL REGISTERED USERS</th>
-    </thead>
+      <tr>
+         <th>ID</th>
+         <th>USER</th>
+         <th>PASSWORD</th>
+      </tr>
+      </thead>
 
     <c:forEach items="${allUsers}" var="user">
           <tr>
@@ -30,10 +63,16 @@
     </c:forEach>
   </table>
 
-  <table>
+<h2>USERS BEST SCORES</h2>
+  <table
+  id="t2">
       <thead>
-      <th>USERS BEST SCORES</th>
-      </thead>
+        <tr>
+          <th>ID</th>
+          <th>PLAYER</th>
+          <th>SCORE</th>
+        </tr>
+        </thead>
       <c:forEach items="${playersResults}" var="player">
                     <tr>
                       <td>${player.id}</td>
@@ -44,5 +83,10 @@
   </table>
   <a href="/profile">Return</a>
 </div>
+
+<div id="images">
+   <img class="displayed" src="../img/black.png" alt="" width="240" height="384" >
+</div>
+
 </body>
 </html>
