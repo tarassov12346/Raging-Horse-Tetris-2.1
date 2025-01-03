@@ -1,5 +1,7 @@
 package com.app.game.tetris.model;
 
+import org.bson.codecs.pojo.annotations.BsonCreator;
+import org.bson.codecs.pojo.annotations.BsonProperty;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
@@ -13,11 +15,19 @@ public class SavedGame implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
+    @BsonProperty("playerName")
     private final String playerName;
+
+    @BsonProperty("playerScore")
     private final int playerScore;
+
+    @BsonProperty("cells")
     private final char[][] cells;
 
-    public SavedGame(String playerName, int playerScore, char[][] cells) {
+
+
+    @BsonCreator
+    public SavedGame( @BsonProperty("playerName") String playerName,  @BsonProperty("playerScore") int playerScore,  @BsonProperty("cells") char[][] cells) {
         this.playerName = playerName;
         this.playerScore = playerScore;
         this.cells = cells;

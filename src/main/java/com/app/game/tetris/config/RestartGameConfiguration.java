@@ -10,20 +10,13 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Configuration;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-
 @Configuration
 public class RestartGameConfiguration {
 
     @Autowired
     private ApplicationContext context;
 
-    public State recreateState() throws IOException, ClassNotFoundException {
-        FileInputStream fileInputStream = new FileInputStream(System.getProperty("user.dir")+"\\src\\main\\resources\\save.ser");
-        ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-        SavedGame savedGame = (SavedGame) objectInputStream.readObject();
+    public State recreateStateFromSavedGame(SavedGame savedGame) {
         Game game = context.getBean(Game.class, savedGame.getPlayerName(), savedGame.getPlayerScore());
         Stage recreatedStage = context.getBean(Stage.class, savedGame.getCells(), getTetramino0(), 0, 0, game.getPlayerScore() / 10);
         return context.getBean(State.class, recreatedStage, true, game).restartWithNewTetramino().orElse(context.getBean(State.class, recreatedStage, true, game));

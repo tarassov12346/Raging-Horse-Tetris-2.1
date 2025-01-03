@@ -4,8 +4,8 @@ import com.app.game.tetris.config.PlayGameConfiguration;
 import com.app.game.tetris.config.RestartGameConfiguration;
 import com.app.game.tetris.config.SaveGameConfiguration;
 import com.app.game.tetris.config.StartGameConfiguration;
-import com.app.game.tetris.daoservice.DaoMongoService;
 import com.app.game.tetris.daoservice.DaoGameService;
+import com.app.game.tetris.daoservice.DaoMongoService;
 import com.app.game.tetris.daoservice.DaoUserService;
 import com.app.game.tetris.model.Game;
 import com.app.game.tetris.model.SavedGame;
@@ -27,9 +27,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.validation.Valid;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.util.*;
 
@@ -200,24 +197,21 @@ public class GameController {
     }
 
     @GetMapping({"/save"})
-    public String gameSave() throws IOException {
+    public String gameSave() {
         ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         currentSession = attr.getRequest().getSession(true);
         state.setPause();
         currentSession.setAttribute("isGameOn", false);
         SavedGame savedGame = saveGameConfiguration.saveGame(player, state);
-        FileOutputStream outputStream = new FileOutputStream(System.getProperty("user.dir") + "\\src\\main\\resources\\save.ser");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStream);
-        objectOutputStream.writeObject(savedGame);
-        objectOutputStream.close();
+        daoMongoService.loadSavedGameIntoMongodb(savedGame, player);
         currentSession.setAttribute("gameStatus", "Game Saved");
         makeGamePageView();
         return "snapshot";
     }
 
     @GetMapping({"/restart"})
-    public String gameRestart() throws IOException, ClassNotFoundException {
-        state = restartGameConfiguration.recreateState();
+    public String gameRestart() {
+        state = restartGameConfiguration.recreateStateFromSavedGame(daoMongoService.loadSavedGameFromMongodb(player));
         initiateView();
         makeGamePageView();
         return "index";
