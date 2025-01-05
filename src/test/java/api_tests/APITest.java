@@ -56,7 +56,7 @@ public class APITest extends AbstractTestNGSpringContextTests{
     public Object[][] dataProviderMethod() {
         return new Object[][]{
                 {"hello"},
-                {"save"},
+               {"save"},
                 {"restart"},
                 {"0"},
                 {"1"},
@@ -69,7 +69,10 @@ public class APITest extends AbstractTestNGSpringContextTests{
     @Test(description = "checks if client requests receive successful responses from the server", dataProvider = "dataProviderMethod")
     public void doRequestsGetSuccessfulResponses(String data) {
         log.info("testing for 200 OK response  request-  /" + data);
-        RestAssured.when().get("http://localhost:8080/" + data).then().assertThat().statusCode(200);
+        switch (data){
+            case "hello" -> {RestAssured.given().auth().basic("Dunny","dun").when().get("http://localhost:8080/" + data).then().assertThat().statusCode(200);}
+            default -> RestAssured.when().get("http://localhost:8080/" + data).then().assertThat().statusCode(200);
+        }
     }
 
     @Test(description = "checks if the Game is ON should appear after 'start' request is sent")
@@ -77,6 +80,7 @@ public class APITest extends AbstractTestNGSpringContextTests{
         log.info("shouldGameIsONAppear Test start");
         Response responseToHello =
                 given().baseUri("http://localhost:8080/")
+                        .auth().basic("Dunny","dun")
                         .when()
                         .get("hello")
                         .then()
@@ -102,15 +106,10 @@ public class APITest extends AbstractTestNGSpringContextTests{
     public void shouldPlayerNameAppear() {
         log.info("shouldPlayerNameAppear Test start");
         boolean isPLayerNamePresent = false;
-        List<String> list = new ArrayList<>();
-        list.add("Oswaldo");
-        list.add("Tommy");
-        list.add("Dunny");
-        list.add("Bonny");
-        list.add("Ira");
-        list.add("Wolfy");
+        String playerName="Dunny";
         Response responseToHello =
                 given().baseUri("http://localhost:8080/")
+                        .auth().basic("Dunny","dun")
                         .when()
                         .get("hello")
                         .then()
@@ -128,11 +127,9 @@ public class APITest extends AbstractTestNGSpringContextTests{
         String bodyTxt = response.getBody().asString();
         Document document = Jsoup.parse(bodyTxt);
         Element contentElement = document.getElementById("content");
-        for (String s : list) {
-            if (contentElement.text().contains(s)) {
+            if (contentElement.text().contains(playerName)) {
                 log.info(contentElement.text());
                 isPLayerNamePresent = true;
-            }
         }
         Assert.assertTrue(isPLayerNamePresent);
     }
@@ -144,6 +141,7 @@ public class APITest extends AbstractTestNGSpringContextTests{
         String[] images = {"I.png", "J.png", "K.png", "L.png", "O.png", "S.png", "T.png", "Z.png"};
         Response responseToHello =
                 given().baseUri("http://localhost:8080/")
+                        .auth().basic("Dunny","dun")
                         .when()
                         .get("hello")
                         .then()
@@ -183,6 +181,7 @@ public class APITest extends AbstractTestNGSpringContextTests{
         log.info("shouldTetraminoImageMoveDown Test start");
         Response responseToHello =
                 given().baseUri("http://localhost:8080/")
+                        .auth().basic("Dunny","dun")
                         .when()
                         .get("hello")
                         .then()
@@ -215,6 +214,7 @@ public class APITest extends AbstractTestNGSpringContextTests{
         log.info("shouldTetraminoImageMoveLeft Test start");
         Response responseToHello =
                 given().baseUri("http://localhost:8080/")
+                        .auth().basic("Dunny","dun")
                         .when()
                         .get("hello")
                         .then()
@@ -248,6 +248,7 @@ public class APITest extends AbstractTestNGSpringContextTests{
         log.info("shouldTetraminoImageMoveRight Test start");
         Response responseToHello =
                 given().baseUri("http://localhost:8080/")
+                        .auth().basic("Dunny","dun")
                         .when()
                         .get("hello")
                         .then()
@@ -280,6 +281,7 @@ public class APITest extends AbstractTestNGSpringContextTests{
         log.info("shouldTetraminoImageRotate Test start");
         Response responseToHello =
                 given().baseUri("http://localhost:8080/")
+                        .auth().basic("Dunny","dun")
                         .when()
                         .get("hello")
                         .then()

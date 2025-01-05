@@ -28,7 +28,7 @@ public class StepDefinitionsForSave {
     private String restartedPLayerName;
     private String restartedPlayerScore;
 
-    private final String HELLO_PAGE = "http://localhost:8080/hello";
+    private final String HELLO_PAGE = "http://Dunny:dun@localhost:8080/hello";
     private final String SNAPSHOT_PAGE = "http://localhost:8080/6";
 
     @Given("I open the game page thru {string}")

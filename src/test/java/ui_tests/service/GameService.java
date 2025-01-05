@@ -21,7 +21,7 @@ public class GameService {
     public String restartedPLayerName;
     public String restartedPlayerScore;
 
-    private final String HELLO_PAGE = "http://localhost:8080/hello";
+    private final String HELLO_PAGE = "http://Dunny:dun@localhost:8080/hello";
     private final String SNAPSHOT_PAGE = "http://localhost:8080/6";
 
 

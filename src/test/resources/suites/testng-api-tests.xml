@@ -12,6 +12,7 @@
                     <include name="shouldTetraminoImageMoveDown"/>
                     <include name="shouldTetraminoImageMoveLeft"/>
                     <include name="shouldTetraminoImageMoveRight"/>
+                    <include name="shouldTetraminoImageRotate"/>
                 </methods>
             </class>
         </classes>
