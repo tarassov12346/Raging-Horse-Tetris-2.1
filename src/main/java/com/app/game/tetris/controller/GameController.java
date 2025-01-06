@@ -127,9 +127,10 @@ public class GameController {
     @GetMapping("/admin/{userId}")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteUser(@PathVariable Long userId) {
-        daoMongoService.cleanMongodb(daoUserService.findUserById(userId).getUsername(), "");
-        daoMongoService.cleanMongodb(daoUserService.findUserById(userId).getUsername(), "deskTopSnapShot");
-        daoMongoService.cleanMongodb(daoUserService.findUserById(userId).getUsername(), "deskTopSnapShotBest");
+        daoMongoService.cleanSavedGameMongodb(daoUserService.findUserById(userId).getUsername());
+        daoMongoService.cleanImageMongodb(daoUserService.findUserById(userId).getUsername(), "");
+        daoMongoService.cleanImageMongodb(daoUserService.findUserById(userId).getUsername(), "deskTopSnapShot");
+        daoMongoService.cleanImageMongodb(daoUserService.findUserById(userId).getUsername(), "deskTopSnapShotBest");
         daoGameService.deleteByName(daoUserService.findUserById(userId).getUsername());
         daoUserService.deleteUser(userId);
         return "redirect:/admin";
@@ -176,11 +177,11 @@ public class GameController {
         daoGameService.recordScore(player);
         daoGameService.retrieveScores();
         daoMongoService.makeDesktopSnapshot("deskTopSnapShot");
-        daoMongoService.cleanMongodb(player.getPlayerName(), "deskTopSnapShot");
+        daoMongoService.cleanImageMongodb(player.getPlayerName(), "deskTopSnapShot");
         daoMongoService.loadSnapShotIntoMongodb(player.getPlayerName(), "deskTopSnapShot");
         if (player.getPlayerScore() >= daoGameService.getPlayerBestScore()) {
             daoMongoService.makeDesktopSnapshot("deskTopSnapShotBest");
-            daoMongoService.cleanMongodb(player.getPlayerName(), "deskTopSnapShotBest");
+            daoMongoService.cleanImageMongodb(player.getPlayerName(), "deskTopSnapShotBest");
             daoMongoService.loadSnapShotIntoMongodb(player.getPlayerName(), "deskTopSnapShotBest");
         }
         makeGamePageView();

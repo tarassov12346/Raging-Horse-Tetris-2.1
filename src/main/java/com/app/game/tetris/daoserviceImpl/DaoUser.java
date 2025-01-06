@@ -68,13 +68,10 @@ public class DaoUser implements UserDetailsService, DaoUserService {
         return false;
     }
 
-
     @Override
-    public User findUserById(Long userId){
+    public User findUserById(Long userId) {
         return userRepository.findById(userId).get();
     }
-
-
 
     @Override
     public boolean saveUser(User user) {

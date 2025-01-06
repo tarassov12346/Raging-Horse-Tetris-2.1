@@ -100,7 +100,7 @@ public class DaoMongo implements DaoMongoService {
     }
 
     @Override
-    public void cleanMongodb(String playerName, String fileName) {
+    public void cleanImageMongodb(String playerName, String fileName) {
         String uri = mongoUri;
         MongoClient mongoClient = MongoClients.create(uri);
         MongoDatabase database = mongoClient.getDatabase("shopDB");
@@ -110,6 +110,16 @@ public class DaoMongo implements DaoMongoService {
             gridFSBucket.delete(gridFSFile.cursor().next().getId());
         }
         mongoClient.close();
+    }
+
+    @Override
+    public void cleanSavedGameMongodb(String playerName) {
+        String uri = mongoUri;
+        MongoClient mongoClient = MongoClients.create(uri);
+        MongoDatabase database = mongoClient.getDatabase("shopDB");
+        MongoCollection<Document> collection = database.getCollection("saved_games");
+        Bson filter = Filters.eq("name", playerName + "SavedGame");
+        collection.deleteMany(filter);
     }
 
     @Override

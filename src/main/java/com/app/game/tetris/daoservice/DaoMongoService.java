@@ -14,7 +14,9 @@ public interface DaoMongoService {
 
     boolean isMongoDBNotEmpty();
 
-    void cleanMongodb(String playerName, String fileName);
+    void cleanImageMongodb(String playerName, String fileName);
+
+    void cleanSavedGameMongodb(String playername);
 
     void loadSavedGameIntoMongodb(SavedGame savedGame, Game player);
 
