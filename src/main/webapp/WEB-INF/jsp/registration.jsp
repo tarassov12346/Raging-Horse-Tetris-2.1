@@ -17,7 +17,7 @@
 <form:form method="POST" modelAttribute="userForm">
     <h2>REGISTRATION FORM</h2>
     <div>
-      <form:input type="text" path="username" placeholder="Username"
+      <form:input type="text" minlength="4" path="username" placeholder="Username"
                   autofocus="true"></form:input>
       <form:errors path="username"></form:errors>
         ${usernameError}
@@ -26,7 +26,7 @@
       <form:input type="password" path="password" placeholder="Password"></form:input>
     </div>
     <div>
-      <form:input type="password" path="passwordConfirm"
+      <form:input type="password" minlength="3" path="passwordConfirm"
                   placeholder="Confirm your password"></form:input>
       <form:errors path="password"></form:errors>
         ${passwordError}

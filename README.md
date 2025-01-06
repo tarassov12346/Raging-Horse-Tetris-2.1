@@ -19,18 +19,18 @@ docker-compose -f DockerCompose.yml up
 
 - open browser at http://localhost:8080/hello
 
-![](hello.png)
+![](imagesForReadme/hello.png)
 
 - use the profile button to enter the player's room where the player's statistics 
   including the player's last game snapshot and best game snapshot final is depicted.
   After the first game of each player the Mongo data base will be filled with relevant images
   as well as PostgreSQL data base with the player's name and score.
 
-![](profile.png)
+![](imagesForReadme/profile.png)
 
 - use the start button to start the game
 
-![](tetris.png)
+![](imagesForReadme/tetris.png)
 
 the game status is shown and changes as the game is saved or is over
 
@@ -86,7 +86,7 @@ There are 16 tests which provide for the game units' functionality:
 
 - each test method is logged for debugging pls find the unit tests log in \target\logs\quality-automation.log
 
-![](unitTestLog.png)
+![](imagesForReadme/unitTestLog.png)
 
 Pls find 8 api tests which make sure that each defined client request receives successful response
 
@@ -98,7 +98,7 @@ from the server and 7 more api tests checking if response bodies are in accordan
 
 - the test method is logged for debugging pls find the api tests log in \target\logs\quality-automation.log
 
-![](apiTestLog.png)
+![](imagesForReadme/apiTestLog.png)
 
 Pls find 3 UI tests, making sure that the game is saved and then can be restarted at any moment later
 
@@ -108,7 +108,7 @@ Pls find 3 UI tests, making sure that the game is saved and then can be restarte
 
 - the test method is logged for debugging pls find the ui tests log in \target\logs\quality-automation.log
 
-![](uiTestLog.png)
+![](imagesForReadme/uiTestLog.png)
 
 Pls find Cucumber test, reflecting user behaviour driven approach to tests development
 
@@ -118,7 +118,7 @@ Pls find Cucumber test, reflecting user behaviour driven approach to tests devel
 
 - the test method is logged for debugging pls find the bdd tests log in \target\logs\quality-automation.log
 
-![](bddTestLog.png)
+![](imagesForReadme/bddTestLog.png)
 
 Run All tests
 
