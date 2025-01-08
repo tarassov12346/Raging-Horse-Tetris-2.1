@@ -57,7 +57,7 @@ id="user">
               <c:forEach items="${user.roles}" var="role">${role.name}; </c:forEach>
             </td>
             <td>
-               <button type="submit"  onclick=window.location='/admin/${user.id}' >Delete</button>
+              <button type="submit"  onclick=window.location='/admin/${user.id}' >Delete</button>
             </td>
           </tr>
     </c:forEach>

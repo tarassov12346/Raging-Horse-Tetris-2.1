@@ -13,6 +13,8 @@ public interface DaoUserService {
 
     User findUserById(Long userId);
 
+    User findUserByUserName(String userName);
+
     boolean saveUser(User user);
 }
 

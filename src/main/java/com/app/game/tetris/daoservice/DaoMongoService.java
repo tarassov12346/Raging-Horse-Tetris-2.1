@@ -10,7 +10,9 @@ public interface DaoMongoService {
 
     void prepareMongoDBForNewPLayer(String playerName);
 
-    boolean isFilePresentInMongoDB(String fileName);
+    boolean isImageFilePresentInMongoDB(String fileName);
+
+    boolean isSavedGamePresentInMongoDB(String fileName);
 
     boolean isMongoDBNotEmpty();
 

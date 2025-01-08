@@ -82,13 +82,23 @@ public class DaoMongo implements DaoMongoService {
     }
 
     @Override
-    public boolean isFilePresentInMongoDB(String fileName) {
+    public boolean isImageFilePresentInMongoDB(String fileName) {
         String uri = mongoUri;
         MongoClient mongoClient = MongoClients.create(uri);
         MongoDatabase database = mongoClient.getDatabase("shopDB");
         BasicDBObject whereQuery = new BasicDBObject();
         whereQuery.put("filename", fileName + ".jpg");
         return database.getCollection("fs.files").find(whereQuery).cursor().hasNext();
+    }
+
+    @Override
+    public boolean isSavedGamePresentInMongoDB(String fileName) {
+        String uri = mongoUri;
+        MongoClient mongoClient = MongoClients.create(uri);
+        MongoDatabase database = mongoClient.getDatabase("shopDB");
+        BasicDBObject whereQuery = new BasicDBObject();
+        whereQuery.put("name", fileName);
+        return  database.getCollection("saved_games").find(whereQuery).cursor().hasNext();
     }
 
     @Override

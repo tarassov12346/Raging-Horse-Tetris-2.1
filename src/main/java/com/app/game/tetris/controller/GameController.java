@@ -8,6 +8,7 @@ import com.app.game.tetris.daoservice.DaoGameService;
 import com.app.game.tetris.daoservice.DaoMongoService;
 import com.app.game.tetris.daoservice.DaoUserService;
 import com.app.game.tetris.model.Game;
+import com.app.game.tetris.model.Roles;
 import com.app.game.tetris.model.SavedGame;
 import com.app.game.tetris.model.User;
 import com.app.game.tetris.serviceImpl.State;
@@ -15,14 +16,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
@@ -111,7 +113,7 @@ public class GameController {
     public String profile() {
         daoGameService.retrievePlayerScores(player);
         if (!daoMongoService.isMongoDBNotEmpty()) daoMongoService.prepareMongoDB();
-        if (!daoMongoService.isFilePresentInMongoDB(player.getPlayerName()))
+        if (!daoMongoService.isImageFilePresentInMongoDB(player.getPlayerName()))
             daoMongoService.prepareMongoDBForNewPLayer(player.getPlayerName());
         makeProfileView();
         return "profile";
@@ -125,14 +127,19 @@ public class GameController {
     }
 
     @GetMapping("/admin/{userId}")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public String deleteUser(@PathVariable Long userId) {
-        daoMongoService.cleanSavedGameMongodb(daoUserService.findUserById(userId).getUsername());
-        daoMongoService.cleanImageMongodb(daoUserService.findUserById(userId).getUsername(), "");
-        daoMongoService.cleanImageMongodb(daoUserService.findUserById(userId).getUsername(), "deskTopSnapShot");
-        daoMongoService.cleanImageMongodb(daoUserService.findUserById(userId).getUsername(), "deskTopSnapShotBest");
-        daoGameService.deleteByName(daoUserService.findUserById(userId).getUsername());
-        daoUserService.deleteUser(userId);
+        if (daoUserService.findUserById(userId).getUsername().equals(player.getPlayerName())) return "redirect:/admin";
+        for (Roles role : daoUserService.findUserByUserName(player.getPlayerName()).getRoles()) {
+            if (role.getName().equals("ROLE_ADMIN")) {
+                daoMongoService.cleanSavedGameMongodb(daoUserService.findUserById(userId).getUsername());
+                daoMongoService.cleanImageMongodb(daoUserService.findUserById(userId).getUsername(), "");
+                daoMongoService.cleanImageMongodb(daoUserService.findUserById(userId).getUsername(), "deskTopSnapShot");
+                daoMongoService.cleanImageMongodb(daoUserService.findUserById(userId).getUsername(), "deskTopSnapShotBest");
+                daoGameService.deleteByName(daoUserService.findUserById(userId).getUsername());
+                daoUserService.deleteUser(userId);
+                return "redirect:/admin";
+            }
+        }
         return "redirect:/admin";
     }
 
@@ -212,9 +219,12 @@ public class GameController {
 
     @GetMapping({"/restart"})
     public String gameRestart() {
-        state = restartGameConfiguration.recreateStateFromSavedGame(daoMongoService.loadSavedGameFromMongodb(player));
-        initiateView();
-        makeGamePageView();
+        if (daoMongoService.isSavedGamePresentInMongoDB(player.getPlayerName() + "SavedGame")) {
+            state = restartGameConfiguration.recreateStateFromSavedGame(daoMongoService.loadSavedGameFromMongodb(player));
+            initiateView();
+            makeGamePageView();
+            return "index";
+        }
         return "index";
     }
 
@@ -280,6 +290,13 @@ public class GameController {
             e.printStackTrace();
         }
     }
+
+
+    @ExceptionHandler(value = {AccessDeniedException.class, NullPointerException.class})
+    public ResponseEntity<Object> handleAnyException() {
+        return new ResponseEntity<>("You have no access to this function", new HttpHeaders(), HttpStatus.FORBIDDEN);
+    }
+
 
     private void initiateView() {
         currentSession.setAttribute("gameStatus", "Game is ON");
