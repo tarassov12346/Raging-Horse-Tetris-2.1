@@ -25,6 +25,7 @@ import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -98,7 +99,7 @@ public class DaoMongo implements DaoMongoService {
         MongoDatabase database = mongoClient.getDatabase("shopDB");
         BasicDBObject whereQuery = new BasicDBObject();
         whereQuery.put("name", fileName);
-        return  database.getCollection("saved_games").find(whereQuery).cursor().hasNext();
+        return database.getCollection("saved_games").find(whereQuery).cursor().hasNext();
     }
 
     @Override
@@ -176,6 +177,43 @@ public class DaoMongo implements DaoMongoService {
                 .chunkSizeBytes(1048576)
                 .metadata(new Document("type", "jpg"));
         try (GridFSUploadStream uploadStream = gridFSBucket.openUploadStream(playerName + fileName + ".jpg", options)) {
+            // Writes file data to the GridFS upload stream
+            uploadStream.write(data);
+            uploadStream.flush();
+            // Prints the "_id" value of the uploaded file
+            System.out.println("The file id of the uploaded file is: " + uploadStream.getObjectId().toHexString());
+// Prints a message if any exceptions occur during the upload process
+        } catch (Exception e) {
+            System.err.println("The file upload failed: " + e);
+        }
+        Bson query = Filters.eq("metadata.type", "jpg");
+        Bson sort = Sorts.ascending("filename");
+// Retrieves 5 documents in the bucket that match the filter and prints metadata
+        gridFSBucket.find(query)
+                .sort(sort)
+                .limit(5)
+                .forEach(gridFSFile -> System.out.println(gridFSFile));
+        // Now you can work with the 'database' object to perform CRUD operations.
+        // Don't forget to close the MongoClient when you're done.
+        mongoClient.close();
+    }
+
+    @Override
+    public void loadMugShotIntoMongodb(String playerName, MultipartFile file) {
+        String uri = mongoUri;
+        MongoClient mongoClient = MongoClients.create(uri);
+        MongoDatabase database = mongoClient.getDatabase("shopDB");
+        GridFSBucket gridFSBucket = GridFSBuckets.create(database);
+        byte[] data = new byte[0];
+        try {
+            data = file.getBytes();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        GridFSUploadOptions options = new GridFSUploadOptions()
+                .chunkSizeBytes(1048576)
+                .metadata(new Document("type", "jpg"));
+        try (GridFSUploadStream uploadStream = gridFSBucket.openUploadStream(playerName + ".jpg", options)) {
             // Writes file data to the GridFS upload stream
             uploadStream.write(data);
             uploadStream.flush();

@@ -17,6 +17,18 @@
 <h1 text align="center"> <b id="profileBox"> Hello ${player}! Your best score is ${playerBestScore}</b> </h1>
 <h2 text align="center"> <b id="profileAttemptsBox"> You have played ${playerAttemptsNumber} times! </b> </h2>
 <h3 text align="center"> <b id="profileAttemptsBox"> LAST PLAY RESULT ******************YOUR MUGSHOT ****************BEST PLAY RESULT</b> </h3>
+
+<form id="forms" action="/upload"
+    method="POST"
+    enctype="multipart/form-data"
+    >
+    <div>
+    <label>UPLOAD YOUR MUGSHOT: </label>
+    <input type="file" name="image" accept="image/jpg" />
+    <input type="submit" value="Submit" />
+    </div>
+</form>
+
 <div id="controls">
    <button id="startGameButton" type="button" class="buttonStart" onclick="start()" >Start</button>
 </div>
@@ -32,8 +44,6 @@ function start() {
 }
 
 </script>
-
-
 
 </body>
 </html>

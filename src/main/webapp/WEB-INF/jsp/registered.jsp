@@ -13,7 +13,6 @@
 <h1 text align="center"> <b id="registeredBox"> YOU HAVE BEEN SUCCESSFULLY REGISTERED AS NEW PLAYER!!!</b> </h1>
 
 
-
 <div id="images">
    <img class="displayed" src="../img/black.png" alt="" width="240" height="384" >
 </div>

@@ -2,6 +2,7 @@ package com.app.game.tetris.daoservice;
 
 import com.app.game.tetris.model.Game;
 import com.app.game.tetris.model.SavedGame;
+import org.springframework.web.multipart.MultipartFile;
 
 public interface DaoMongoService {
     void runMongoServer();
@@ -25,6 +26,8 @@ public interface DaoMongoService {
     SavedGame loadSavedGameFromMongodb(Game player);
 
     void loadSnapShotIntoMongodb(String playerName, String fileName);
+
+    void loadMugShotIntoMongodb(String playerName, MultipartFile file);
 
     void makeDesktopSnapshot(String fileNameDetail);
 
