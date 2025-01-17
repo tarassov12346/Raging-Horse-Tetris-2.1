@@ -1,6 +1,7 @@
 package com.app.game.tetris.daoserviceImpl;
 
 import com.app.game.tetris.daoservice.DaoUserService;
+import com.app.game.tetris.model.Roles;
 import com.app.game.tetris.model.User;
 import com.app.game.tetris.repository.RoleRepository;
 import com.app.game.tetris.repository.UserRepository;
@@ -88,5 +89,34 @@ public class DaoUser implements UserDetailsService, DaoUserService {
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return true;
+    }
+
+    @Override
+    public boolean isRolesDBEmpty() {
+        return roleRepository.findById(2L).isEmpty();
+    }
+
+    @Override
+    public void prepareRolesDB() {
+        Roles rolesAdmin = new Roles();
+        rolesAdmin.setId(1L);
+        rolesAdmin.setName("ROLE_ADMIN");
+        Roles rolesUser = new Roles();
+        rolesUser.setId(2L);
+        rolesUser.setName("ROLE_USER");
+        roleRepository.save(rolesAdmin);
+        roleRepository.save(rolesUser);
+    }
+
+    @Override
+    public void prepareUserDB() {
+        User userAdmin = new User();
+        userAdmin.setId(1L);
+        userAdmin.setUsername("admin");
+        userAdmin.setPassword("sam");
+        userAdmin.setPasswordConfirm("sam");
+        userAdmin.setRoles(Collections.singleton(roleRepository.findById(1L).get()));
+        userAdmin.setPassword(bCryptPasswordEncoder.encode(userAdmin.getPassword()));
+        userRepository.save(userAdmin);
     }
 }

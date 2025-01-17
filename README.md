@@ -17,7 +17,10 @@ To run the game in Docker do the following steps:
 
 docker-compose -f DockerCompose.yml up
 
-- open browser at http://localhost:8080/hello
+- open browser at http://localhost:8080/register
+![](imagesForReadme/registration form.png)
+![](imagesForReadme/registered.png)
+![](imagesForReadme/register.png)
 
 ![](imagesForReadme/hello.png)
 
@@ -25,7 +28,7 @@ docker-compose -f DockerCompose.yml up
   including the player's last game snapshot and best game snapshot final is depicted.
   After the first game of each player the Mongo data base will be filled with relevant images
   as well as PostgreSQL data base with the player's name and score.
-
+![](imagesForReadme/admin.png)
 ![](imagesForReadme/profile.png)
 
 - use the start button to start the game

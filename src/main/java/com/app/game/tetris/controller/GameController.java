@@ -62,6 +62,10 @@ public class GameController {
 
     @GetMapping({"/register"})
     public String registration(Model model) {
+        if (daoUserService.isRolesDBEmpty()) {
+            daoUserService.prepareRolesDB();
+            daoUserService.prepareUserDB();
+        }
         model.addAttribute("userForm", new User());
         return "registration";
     }
@@ -106,7 +110,7 @@ public class GameController {
         player = startGameConfiguration.createGame(playerName);
         state = startGameConfiguration.initiateState(playerName);
         daoGameService.retrieveScores();
- //       daoMongoService.runMongoServer();
+        daoMongoService.runMongoServer();
         makeHelloView();
         return "hello";
     }
@@ -121,7 +125,6 @@ public class GameController {
     @GetMapping({"/profile"})
     public String profile() {
         daoGameService.retrievePlayerScores(player);
-        if (!daoMongoService.isMongoDBNotEmpty()) daoMongoService.prepareMongoDB();
         if (!daoMongoService.isImageFilePresentInMongoDB(player.getPlayerName()))
             daoMongoService.prepareMongoDBForNewPLayer(player.getPlayerName());
         makeProfileView();

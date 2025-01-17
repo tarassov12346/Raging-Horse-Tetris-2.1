@@ -32,8 +32,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class DaoMongo implements DaoMongoService {
@@ -57,22 +55,6 @@ public class DaoMongo implements DaoMongoService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    @Override
-    public void prepareMongoDB() {
-        List<String> list = new ArrayList<>();
-        list.add("Oswaldo");
-        list.add("Tommy");
-        list.add("Dunny");
-        list.add("Bonny");
-        list.add("Ira");
-        list.add("Wolfy");
-        list.forEach(playerName -> {
-            fillMongoDB(playerName, playerName);
-            fillMongoDB(playerName + "deskTopSnapShotBest", playerName + "deskTopSnapShotBest");
-            fillMongoDB(playerName + "deskTopSnapShot", playerName + "deskTopSnapShot");
-        });
     }
 
     @Override
@@ -100,14 +82,6 @@ public class DaoMongo implements DaoMongoService {
         BasicDBObject whereQuery = new BasicDBObject();
         whereQuery.put("name", fileName);
         return database.getCollection("saved_games").find(whereQuery).cursor().hasNext();
-    }
-
-    @Override
-    public boolean isMongoDBNotEmpty() {
-        String uri = mongoUri;
-        MongoClient mongoClient = MongoClients.create(uri);
-        MongoDatabase database = mongoClient.getDatabase("shopDB");
-        return database.getCollection("fs.files").countDocuments() > 0;
     }
 
     @Override

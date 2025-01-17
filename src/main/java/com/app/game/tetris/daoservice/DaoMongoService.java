@@ -7,15 +7,11 @@ import org.springframework.web.multipart.MultipartFile;
 public interface DaoMongoService {
     void runMongoServer();
 
-    void prepareMongoDB();
-
     void prepareMongoDBForNewPLayer(String playerName);
 
     boolean isImageFilePresentInMongoDB(String fileName);
 
     boolean isSavedGamePresentInMongoDB(String fileName);
-
-    boolean isMongoDBNotEmpty();
 
     void cleanImageMongodb(String playerName, String fileName);
 

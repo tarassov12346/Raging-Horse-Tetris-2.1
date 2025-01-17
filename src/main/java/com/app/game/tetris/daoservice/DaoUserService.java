@@ -16,6 +16,12 @@ public interface DaoUserService {
     User findUserByUserName(String userName);
 
     boolean saveUser(User user);
+
+    boolean isRolesDBEmpty();
+
+    void prepareRolesDB();
+
+    void prepareUserDB();
 }
 
 
