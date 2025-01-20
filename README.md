@@ -18,7 +18,7 @@ To run the game in Docker do the following steps:
 docker-compose -f DockerCompose.yml up
 
 - open browser at http://localhost:8080/register
-![](imagesForReadme/registration form.png)
+![](imagesForReadme/registrationForm.png)
 - register yourself if you are the first time player
 ![](imagesForReadme/registered.png)
 - log in into the game with the password
