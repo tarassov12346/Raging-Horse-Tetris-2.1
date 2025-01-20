@@ -19,16 +19,23 @@ docker-compose -f DockerCompose.yml up
 
 - open browser at http://localhost:8080/register
 ![](imagesForReadme/registration form.png)
+- register yourself if you are the first time player
 ![](imagesForReadme/registered.png)
+- log in into the game with the password
 ![](imagesForReadme/register.png)
 
 ![](imagesForReadme/hello.png)
+
+- use the admin button to see all the registered players and their best scores.
+- if you have the admin privilege you will be able to use the button to delete all the info regarding each player from every table.
+
+![](imagesForReadme/admin.png)
 
 - use the profile button to enter the player's room where the player's statistics 
   including the player's last game snapshot and best game snapshot final is depicted.
   After the first game of each player the Mongo data base will be filled with relevant images
   as well as PostgreSQL data base with the player's name and score.
-![](imagesForReadme/admin.png)
+
 ![](imagesForReadme/profile.png)
 
 - use the start button to start the game
@@ -54,6 +61,7 @@ the game speed increases along with the player's score and is shown
 The project uses the following technologies:
 
 - Spring Boot
+- Spring Security
 - JSP
 - Serialization
 - NoSQL (MongoDB) 
