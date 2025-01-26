@@ -110,7 +110,7 @@ public class GameController {
         player = startGameConfiguration.createGame(playerName);
         state = startGameConfiguration.initiateState(playerName);
         daoGameService.retrieveScores();
- //       daoMongoService.runMongoServer();
+    //    daoMongoService.runMongoServer();
         makeHelloView();
         return "hello";
     }

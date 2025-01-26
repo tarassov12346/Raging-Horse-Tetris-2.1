@@ -22,6 +22,10 @@ public class Game {
     @Column(name = "name")
     private String playerName;
 
+    public Long getId() {
+        return id;
+    }
+
     @Column(name = "score")
     private int playerScore;
 
